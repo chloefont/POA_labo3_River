@@ -3,3 +3,14 @@
 //
 
 #include "Container.h"
+
+Container::Container(const std::string& name) : name(name){
+}
+
+std::list<Person*> Container::getPersons() const {
+   return persons;
+}
+
+std::string Container::getName() const {
+   return name;
+}

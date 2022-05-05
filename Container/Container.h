@@ -5,9 +5,20 @@
 #ifndef LABO4_RIVER_CONTAINER_H
 #define LABO4_RIVER_CONTAINER_H
 
+#include <string>
+#include <list>
+#include "../Person/Person.h"
+
 
 class Container {
+public:
+   Container(const std::string& name);
+   std::list<Person*> getPersons() const;
+   std::string getName() const;
 
+private:
+   std::string name;
+   std::list<Person*> persons;
 };
 
 

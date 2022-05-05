@@ -3,3 +3,10 @@
 //
 
 #include "Boat.h"
+
+Boat::Boat(const std::string& name, Bank* bank) : Container(name), bank(bank) {
+}
+
+Bank* Boat::getBank() const {
+   return bank;
+}

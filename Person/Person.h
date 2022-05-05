@@ -6,8 +6,16 @@
 #define LABO4_RIVER_PERSON_H
 
 
-class Person {
+#include <string>
 
+class Person {
+public:
+   Person(const std::string& name);
+
+   std::string getName() const;
+
+private:
+   std::string name;
 };
 
 
