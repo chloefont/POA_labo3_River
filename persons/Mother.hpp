@@ -6,8 +6,11 @@
 #define LABO4_RIVER_MOTHER_HPP
 
 
-class Mother {
+#include "Parent.hpp"
 
+class Mother: public Parent {
+public:
+   bool check() const override;
 };
 
 
