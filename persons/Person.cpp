@@ -7,6 +7,10 @@
 
 using namespace std;
 
+Person::Person(const string &name) : name(name) {
+
+}
+
 bool Person::move(Container &to) const {
    throw logic_error("Function not yet implemented");
    return false;
@@ -15,3 +19,9 @@ bool Person::move(Container &to) const {
 bool Person::canDrive() const {
    return CAN_DRIVE;
 }
+
+std::string Person::getName() const {
+   return name;
+}
+
+

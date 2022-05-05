@@ -9,14 +9,18 @@
 #include "../Container/Container.h"
 
 class Person {
-   static const bool CAN_DRIVE = true;
-   Container* actualContainer = nullptr;
-
 public:
+   Person(const std::string& name);
    virtual bool check() const = 0;
    bool move(Container& to) const;
    virtual bool canDrive() const;
    virtual ~Person() = default;
+   std::string getName() const;
+
+private:
+   static const bool CAN_DRIVE = true;
+   Container* actualContainer = nullptr;
+   std::string name;
 };
 
 
