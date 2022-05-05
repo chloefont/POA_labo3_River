@@ -8,7 +8,7 @@
 
 #include "Child.hpp"
 
-class Daughter: Child {
+class Daughter: public Child {
 public:
    bool check() const override;
 };

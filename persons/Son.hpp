@@ -8,7 +8,7 @@
 
 #include "Child.hpp"
 
-class Son : Child {
+class Son : public Child {
 
 
 public:

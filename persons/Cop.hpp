@@ -8,7 +8,7 @@
 
 #include "Person.hpp"
 
-class Cop: Person {
+class Cop: public Person {
 public:
    bool check() const override;
 };

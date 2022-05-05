@@ -3,7 +3,7 @@
 //
 
 #include <stdexcept>
-#include "Cop.h"
+#include "Cop.hpp"
 using namespace std;
 
 bool Cop::check() const {
