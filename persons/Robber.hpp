@@ -9,8 +9,11 @@
 #include "Person.hpp"
 
 class Robber : public Person {
+   static const bool CAN_DRIVE = false;
+
 public:
    bool check() const override;
+   bool canDrive() const override;
 };
 
 

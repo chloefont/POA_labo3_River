@@ -9,3 +9,7 @@ bool Robber::check() const {
    throw logic_error("Function not yet implemented");
    return false;
 }
+
+bool Robber::canDrive() const {
+   return CAN_DRIVE;
+}
