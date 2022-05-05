@@ -5,7 +5,7 @@
 #ifndef LABO4_RIVER_PERSON_HPP
 #define LABO4_RIVER_PERSON_HPP
 
-
+class Container;
 #include "../Container/Container.h"
 
 class Person {

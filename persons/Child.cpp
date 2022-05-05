@@ -19,7 +19,9 @@ Mother& Child::getMother() const {
    return mother;
 }
 
-Child::Child(Father &father, Mother &mother):Person(), father(father), mother
+Child::Child(string name, Father &father, Mother &mother):Person(name), father
+(father),
+mother
 (mother) {}
 
 bool Child::canDrive() const {

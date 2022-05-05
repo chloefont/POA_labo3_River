@@ -7,6 +7,7 @@
 
 #include <string>
 #include <list>
+class Person;
 #include "../persons/Person.hpp"
 
 

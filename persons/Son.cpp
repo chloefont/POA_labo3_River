@@ -3,6 +3,7 @@
 //
 
 #include <stdexcept>
+#include <utility>
 #include "Son.hpp"
 
 using namespace std;
@@ -12,4 +13,4 @@ bool Son::check() const {
    return false;
 }
 
-Son::Son(Father &father, Mother &mother): Child(father, mother) {}
+Son::Son(string name, Father &father, Mother &mother): Child(std::move(name), father, mother) {}

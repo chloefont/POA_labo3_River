@@ -16,7 +16,7 @@ class Child : public Person {
    Mother& mother;
 
 public:
-   Child(Father& father, Mother& mother);
+   Child(std::string name, Father& father, Mother& mother);
    bool check() const override;
    Father &getFather() const;
    Mother &getMother() const;
