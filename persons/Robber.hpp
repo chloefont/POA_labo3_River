@@ -6,8 +6,11 @@
 #define LABO4_RIVER_ROBBER_HPP
 
 
-class Robber {
+#include "Person.hpp"
 
+class Robber : Person {
+public:
+   bool check() const override;
 };
 
 

@@ -6,8 +6,11 @@
 #define LABO4_RIVER_SON_HPP
 
 
-class Son {
+#include "Child.hpp"
 
+class Son : Child {
+public:
+   bool check() const override;
 };
 
 
