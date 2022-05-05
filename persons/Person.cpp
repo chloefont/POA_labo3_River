@@ -12,6 +12,6 @@ bool Person::move(Container &to) const {
    return false;
 }
 
-Person::Person(Container &actualContainer) : actualContainer(actualContainer){
-
+bool Person::canDrive() const {
+   return CAN_DRIVE;
 }

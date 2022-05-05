@@ -3,3 +3,7 @@
 //
 
 #include "Daughter.hpp"
+
+bool Daughter::check() const {
+   return Child::check();
+}

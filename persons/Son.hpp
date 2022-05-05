@@ -9,7 +9,11 @@
 #include "Child.hpp"
 
 class Son : Child {
+
+
 public:
+   Son(Father& father, Mother& mother);
+
    bool check() const override;
 };
 

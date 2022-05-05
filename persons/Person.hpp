@@ -9,13 +9,13 @@
 #include "../Container/Container.h"
 
 class Person {
-   Container& actualContainer;
+   static const bool CAN_DRIVE = true;
+   Container* actualContainer = nullptr;
 
 public:
    virtual bool check() const = 0;
    bool move(Container& to) const;
-
-   explicit Person(Container& actualContainer);
+   virtual bool canDrive() const;
    virtual ~Person() = default;
 };
 

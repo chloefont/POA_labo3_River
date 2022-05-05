@@ -7,9 +7,20 @@
 
 
 #include "Person.hpp"
+#include "Father.hpp"
+#include "Mother.hpp"
 
 class Child : public Person {
+   static const bool CAN_DRIVE = false;
+   Father& father;
+   Mother& mother;
+
+public:
+   Child(Father& father, Mother& mother);
    bool check() const override;
+   Father &getFather() const;
+   Mother &getMother() const;
+   bool canDrive() const override;
 };
 
 

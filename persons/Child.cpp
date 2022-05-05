@@ -10,3 +10,18 @@ bool Child::check() const {
    throw logic_error("Function not yet implemented");
    return true;
 }
+
+Father& Child::getFather() const {
+   return father;
+}
+
+Mother& Child::getMother() const {
+   return mother;
+}
+
+Child::Child(Father &father, Mother &mother):Person(), father(father), mother
+(mother) {}
+
+bool Child::canDrive() const {
+   return CAN_DRIVE;
+}
