@@ -10,7 +10,7 @@
 
 class Bank : public Container {
 public:
-   Bank(const std::string& name);
+   explicit Bank(const std::string& name);
 
 private:
 

@@ -4,7 +4,9 @@
 
 #include "Container.h"
 
-Container::Container(const std::string& name) : name(name){
+#include <utility>
+
+Container::Container(std::string  name) : name(std::move(name)){
 }
 
 std::list<Person*> Container::getPersons() const {

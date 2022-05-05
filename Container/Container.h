@@ -13,7 +13,7 @@ class Person;
 
 class Container {
 public:
-   Container(const std::string& name);
+   explicit Container(std::string  name);
    std::list<Person*> getPersons() const;
    std::string getName() const;
 

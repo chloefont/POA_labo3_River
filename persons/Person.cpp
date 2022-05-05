@@ -3,11 +3,12 @@
 //
 
 #include <stdexcept>
+#include <utility>
 #include "Person.hpp"
 
 using namespace std;
 
-Person::Person(const string &name) : name(name) {
+Person::Person(string name) : name(std::move(name)) {
 
 }
 

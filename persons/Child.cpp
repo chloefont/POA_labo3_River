@@ -3,6 +3,7 @@
 //
 
 #include <stdexcept>
+#include <utility>
 #include "Child.hpp"
 using namespace std;
 
@@ -19,7 +20,7 @@ Mother& Child::getMother() const {
    return mother;
 }
 
-Child::Child(string name, Father &father, Mother &mother):Person(name), father
+Child::Child(string name, Father &father, Mother &mother):Person(std::move(name)), father
 (father),
 mother
 (mother) {}

@@ -10,7 +10,7 @@ class Container;
 
 class Person {
 public:
-   Person(const std::string& name);
+   explicit Person(std::string  name);
    virtual bool check() const = 0;
    bool move(Container& to) const;
    virtual bool canDrive() const;
