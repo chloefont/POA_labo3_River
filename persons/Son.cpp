@@ -9,8 +9,11 @@
 using namespace std;
 
 bool Son::check() const {
-   throw logic_error("Function not yet implemented");
-   return false;
+   if(getMother().getActualContainer() == getActualContainer() &&
+   getFather().getActualContainer() != getActualContainer()){
+      return false;
+   }
+   return true;
 }
 
 Son::Son(string name, Father &father, Mother &mother): Child(std::move(name), father, mother) {}

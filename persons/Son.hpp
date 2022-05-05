@@ -13,7 +13,6 @@ class Son : public Child {
 
 public:
    Son(std::string name, Father& father, Mother& mother);
-
    bool check() const override;
 };
 

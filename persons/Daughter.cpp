@@ -4,6 +4,19 @@
 
 #include "Daughter.hpp"
 
+#include <utility>
+
 bool Daughter::check() const {
-   return Child::check();
+   if(getMother().getActualContainer() != getActualContainer() &&
+      getFather().getActualContainer() == getActualContainer()){
+      return false;
+   }
+
+   return true;
+}
+
+Daughter::Daughter(std::string name, Father &father, Mother &mother) : Child(std::move(name),
+                                                                             father,
+                                                                             mother) {
+
 }

@@ -17,10 +17,10 @@ class Child : public Person {
 
 public:
    Child(std::string name, Father& father, Mother& mother);
-   bool check() const override;
    Father &getFather() const;
    Mother &getMother() const;
    bool canDrive() const override;
+   bool check() const override;
 };
 
 
