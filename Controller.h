@@ -17,18 +17,30 @@ public:
    void nextTurn();
 
 private:
+   void reset();
+   void initPersons();
    static void printMenuRow(const std::string& param, const std::string&
    description);
    void printContainer(const Container& container) const;
    void printBoat(Bank* bank) const;
    void printBoundary(char sep) const;
+   void executeCommand();
+   static void printError(const std::string& message) ;
+   void embark(Person* person);
+   void land(Person* person);
+   void moveBoat();
+   Person* getPerson(const std::string& name) const;
+   void checkGameState();
 
    int turn;
-   Bank* leftBank = new Bank("Gauche");
-   Bank* rightBank = new Bank("Droite");
-   Boat* boat;
+   bool gameFinished;
 
-   int gameSize = 30;
+   Bank* leftBank;
+   Bank* rightBank;
+   Boat* boat;
+   std::list<Person*> persons;
+
+   int gameSize = 70;
    char BANK_SEP = '-';
    char RIVER_SEP = '=';
 };

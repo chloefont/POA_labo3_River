@@ -7,15 +7,16 @@
 #include <utility>
 
 bool Daughter::check() const {
-   if(getMother().getActualContainer() != getActualContainer() &&
-      getFather().getActualContainer() == getActualContainer()){
+   if(getMother()->getActualContainer() != getActualContainer() &&
+      getFather()->getActualContainer() == getActualContainer()){
       return false;
    }
 
    return true;
 }
 
-Daughter::Daughter(std::string name, Father &father, Mother &mother) : Child(std::move(name),
+Daughter::Daughter(std::string name, Father* father, Mother* mother) : Child
+(std::move(name),
                                                                              father,
                                                                              mother) {
 

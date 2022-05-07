@@ -12,13 +12,13 @@
 
 class Child : public Person {
    static const bool CAN_DRIVE = false;
-   Father& father;
-   Mother& mother;
+   Father* father;
+   Mother* mother;
 
 public:
-   Child(std::string name, Father& father, Mother& mother);
-   Father &getFather() const;
-   Mother &getMother() const;
+   Child(std::string name, Father* father, Mother* mother);
+   Father* getFather() const;
+   Mother* getMother() const;
    bool canDrive() const override;
    bool check() const override;
 };

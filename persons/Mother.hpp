@@ -10,6 +10,7 @@
 
 class Mother: public Parent {
 public:
+   explicit Mother(std::string name);
    bool check() const override;
 };
 

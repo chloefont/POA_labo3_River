@@ -16,3 +16,7 @@ std::list<Person*> Container::getPersons() const {
 std::string Container::getName() const {
    return name;
 }
+
+void Container::addPerson(Person *person) {
+   persons.push_back(person);
+}

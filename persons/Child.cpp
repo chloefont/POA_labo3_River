@@ -11,18 +11,16 @@ bool Child::check() const {
    return true;
 }
 
-Father& Child::getFather() const {
+Father* Child::getFather() const {
    return father;
 }
 
-Mother& Child::getMother() const {
+Mother* Child::getMother() const {
    return mother;
 }
 
-Child::Child(string name, Father &father, Mother &mother):Person(std::move(name)), father
-(father),
-mother
-(mother) {}
+Child::Child(string name, Father* father, Mother* mother):Person(std::move(name)),
+father(father), mother(mother) {}
 
 bool Child::canDrive() const {
    return CAN_DRIVE;

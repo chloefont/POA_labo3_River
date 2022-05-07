@@ -16,6 +16,7 @@ public:
    explicit Container(std::string  name);
    std::list<Person*> getPersons() const;
    std::string getName() const;
+   void addPerson(Person* person);
 
 private:
    std::string name;

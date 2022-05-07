@@ -8,7 +8,7 @@
 using namespace std;
 bool Robber::check() const {
 
-   if(cop.getActualContainer() != getActualContainer()){
+   if(cop->getActualContainer() != getActualContainer()){
       for(Person* member: family){
          if(member->getActualContainer() == getActualContainer())
             return false;
@@ -22,16 +22,16 @@ bool Robber::canDrive() const {
    return CAN_DRIVE;
 }
 
-Robber::Robber(std::string name, const FamilyArray &family, Cop &cop) : Person
-(std::move(name)), family(family), cop(cop) {
+Robber::Robber(std::string name, FamilyList family, Cop* cop) : Person
+(std::move(name)), family(std::move(family)), cop(cop) {
 
 }
 
-FamilyArray Robber::getFamily() const {
+FamilyList Robber::getFamily() const {
    return family;
 }
 
-Cop &Robber::getCop() const {
+Cop* Robber::getCop() const {
    return cop;
 }
 
