@@ -11,6 +11,6 @@ bool Cop::check() const {
    throw logic_error("Function not yet implemented");
 }
 
-Cop::Cop(std::string name) : Person(std::move(name)) {
+Cop::Cop(std::string name) : Person(std::move(name), nullptr) {
 
 }

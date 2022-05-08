@@ -11,7 +11,7 @@ class Container;
 
 class Person {
 public:
-   explicit Person(std::string name);
+   explicit Person(std::string name, Container *actualPosition);
 
    virtual ~Person() = default;
 

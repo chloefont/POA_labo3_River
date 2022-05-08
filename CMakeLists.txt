@@ -14,4 +14,9 @@ set(PROJECT_FILES Controller.cpp Controller.h persons/Person.cpp
 
 add_executable(Labo4_RIver main.cpp ${PROJECT_FILES})
 
-add_executable(Test tests/example.cpp tests/catch.hpp ${PROJECT_FILES})
+add_library(Catch2 tests/catch.hpp)
+set_target_properties(Catch2 PROPERTIES LINKER_LANGUAGE CXX)
+add_executable(Test ${PROJECT_FILES} tests/SonTest.cpp
+        tests/DaughterTest.cpp tests/RobberTest.cpp tests/FatherTest.cpp tests/MotherTest.cpp tests/test.cpp)
+
+target_link_libraries(Test Catch2)

@@ -19,7 +19,8 @@ Mother* Child::getMother() const {
    return mother;
 }
 
-Child::Child(string name, Father* father, Mother* mother):Person(std::move(name)),
+Child::Child(string name, Father* father, Mother* mother): Person(std::move(name),
+                                                                  nullptr),
 father(father), mother(mother) {}
 
 bool Child::canDrive() const {

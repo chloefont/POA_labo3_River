@@ -12,6 +12,6 @@ bool Parent::check() const {
    return false;
 }
 
-Parent::Parent(std::string name) : Person(std::move(name)){
+Parent::Parent(std::string name) : Person(std::move(name), nullptr) {
 
 }

@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Person::Person(string name) : name(std::move(name)) {
+Person::Person(std::string name, Container *actualPosition) : name(std::move(name)) {
 
 }
 
