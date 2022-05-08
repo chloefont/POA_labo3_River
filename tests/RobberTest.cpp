@@ -3,15 +3,21 @@
 #include "../persons/Son.hpp"
 #include "../persons/Robber.hpp"
 #include "../persons/Daughter.hpp"
+#include "../Container/Bank.h"
+#include "../Container/Boat.h"
 
 TEST_CASE( "Robber" ) {
-   Father father("Father");
-   Mother mother("mother");
-   Son son1("Son1", &father, &mother);
-   Son son2("Son2", &father, &mother);
-   Daughter daughter1("Daughter1", &father, &mother);
-   Daughter daughter2("Daughter2", &father, &mother);
-   Cop cop("Cop");
+   Bank bankLeft("Left");
+   Bank bankRight("Right");
+   Boat boat("Boat", &bankLeft);
+
+   Father father("Father", &bankLeft);
+   Mother mother("mother", &bankLeft);
+   Son son1("Son1", &father, &mother, &bankLeft);
+   Son son2("Son2", &father, &mother, &bankLeft);
+   Daughter daughter1("Daughter1", &father, &mother, &bankLeft);
+   Daughter daughter2("Daughter2", &father, &mother, &bankLeft);
+   Cop cop("Cop", &bankLeft);
    FamilyList familyList = {
       &father,
       &mother,
@@ -21,6 +27,7 @@ TEST_CASE( "Robber" ) {
       &daughter2
    };
    Robber robber("Robber", familyList, &cop);
+
 
    SECTION("Check()"){
       SECTION("Should not throw exception"){
@@ -57,6 +64,21 @@ TEST_CASE( "Robber" ) {
    SECTION( "getCop()" ) {
       SECTION("Should return false"){
          CHECK(&cop == robber.getCop());
+      }
+   }
+
+   SECTION("move()"){
+      SECTION("Move to boat should be ok"){
+         REQUIRE(robber.move(boat));
+      }
+
+      SECTION("Move to right bank should be ok"){
+         REQUIRE(robber.move(bankRight));
+      }
+
+      SECTION("Move back to left bank should be ok"){
+         REQUIRE(robber.move(boat));
+         REQUIRE(robber.move(bankLeft));
       }
    }
 

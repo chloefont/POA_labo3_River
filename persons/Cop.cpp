@@ -3,7 +3,6 @@
 //
 
 #include <stdexcept>
-#include <utility>
 #include "Cop.hpp"
 using namespace std;
 
@@ -11,6 +10,6 @@ bool Cop::check() const {
    throw logic_error("Function not yet implemented");
 }
 
-Cop::Cop(std::string name) : Person(std::move(name), nullptr) {
+Cop::Cop(std::string name, Container *actualPosition) : Person(std::move(name), actualPosition) {
 
 }

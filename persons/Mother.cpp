@@ -3,7 +3,6 @@
 //
 
 #include <stdexcept>
-#include <utility>
 #include "Mother.hpp"
 using namespace std;
 bool Mother::check() const {
@@ -11,6 +10,6 @@ bool Mother::check() const {
    return false;
 }
 
-Mother::Mother(std::string name) : Parent(std::move(name)) {
+Mother::Mother(std::string name, Container *actualPosition) : Parent(std::move(name), actualPosition) {
 
 }

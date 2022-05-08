@@ -3,7 +3,6 @@
 //
 
 #include <stdexcept>
-#include <utility>
 #include "Parent.hpp"
 using namespace std;
 
@@ -12,6 +11,6 @@ bool Parent::check() const {
    return false;
 }
 
-Parent::Parent(std::string name) : Person(std::move(name), nullptr) {
+Parent::Parent(std::string name, Container *actualPosition) : Person(std::move(name), actualPosition) {
 
 }

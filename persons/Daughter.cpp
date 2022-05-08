@@ -15,9 +15,12 @@ bool Daughter::check() const {
    return true;
 }
 
-Daughter::Daughter(std::string name, Father* father, Mother* mother) : Child
-(std::move(name),
-                                                                             father,
-                                                                             mother) {
+Daughter::Daughter(std::string name, Father *father, Mother *mother,
+                   Container *actualPosition) : Child
+                                                                          (std::move(
+                                                                              name),
+                                                                           father,
+                                                                           mother,
+                                                                           actualPosition) {
 
 }

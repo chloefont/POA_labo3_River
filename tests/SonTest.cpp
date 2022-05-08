@@ -1,10 +1,17 @@
 #include "catch.hpp"
 #include "../persons/Son.hpp"
+#include "../Container/Bank.h"
+#include "../Container/Boat.h"
 
 TEST_CASE( "Son" ) {
-   Father father("Father");
-   Mother mother("Mother");
-   Son son("Son", &father, &mother);
+   Bank bankLeft("Left");
+   Bank bankRight("Right");
+   Boat boat("Boat", &bankLeft);
+
+   Father father("Father", &bankLeft);
+   Mother mother("Mother", &bankLeft);
+   Son son("Son", &father, &mother, &bankLeft);
+
 
    SECTION("check()"){
       SECTION("Should not throw exception"){
@@ -41,6 +48,21 @@ TEST_CASE( "Son" ) {
    SECTION( "getName()" ) {
       SECTION("Should return name"){
          CHECK("Son" == son.getName());
+      }
+   }
+
+   SECTION("move()"){
+      SECTION("Move to boat should be ok"){
+         REQUIRE(son.move(boat));
+      }
+
+      SECTION("Move to right bank should be ok"){
+         REQUIRE(son.move(bankRight));
+      }
+
+      SECTION("Move back to left bank should be ok"){
+         REQUIRE(son.move(boat));
+         REQUIRE(son.move(bankLeft));
       }
    }
 

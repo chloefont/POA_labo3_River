@@ -1,8 +1,15 @@
 #include "catch.hpp"
 #include "../persons/Son.hpp"
+#include "../Container/Bank.h"
+#include "../Container/Boat.h"
 
 TEST_CASE( "Mother" ) {
-   Mother mother("Mother");
+   Bank bankLeft("Left");
+   Bank bankRight("Right");
+   Boat boat("Boat", &bankLeft);
+
+   Mother mother("Mother", &bankLeft);
+
 
    SECTION("check()"){
       SECTION("Should not throw exception"){
@@ -27,6 +34,21 @@ TEST_CASE( "Mother" ) {
    SECTION( "canDrive()" ) {
       SECTION("Should return false"){
          CHECK(true == mother.canDrive());
+      }
+   }
+
+   SECTION("move()"){
+      SECTION("Move to boat should be ok"){
+         REQUIRE(mother.move(boat));
+      }
+
+      SECTION("Move to right bank should be ok"){
+         REQUIRE(mother.move(bankRight));
+      }
+
+      SECTION("Move back to left bank should be ok"){
+         REQUIRE(mother.move(boat));
+         REQUIRE(mother.move(bankLeft));
       }
    }
 

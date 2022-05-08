@@ -10,7 +10,7 @@
 
 class Father: public Parent {
 public:
-   explicit Father(std::string name);
+   explicit Father(std::string name, Container *actualPosition);
    bool check() const override;
 };
 

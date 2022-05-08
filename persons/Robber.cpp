@@ -3,7 +3,6 @@
 //
 
 #include <stdexcept>
-#include <utility>
 #include "Robber.hpp"
 using namespace std;
 bool Robber::check() const {

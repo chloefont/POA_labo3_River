@@ -3,13 +3,12 @@
 //
 
 #include <stdexcept>
-#include <utility>
 #include "Person.hpp"
 
 using namespace std;
 
 Person::Person(std::string name, Container *actualPosition) : name(std::move(name)) {
-
+   actualContainer = actualPosition;
 }
 
 bool Person::canDrive() const {

@@ -16,7 +16,8 @@ class Child : public Person {
    Mother* mother;
 
 public:
-   Child(std::string name, Father* father, Mother* mother);
+   Child(std::string name, Father *father, Mother *mother,
+         Container *actualPosition);
    Father* getFather() const;
    Mother* getMother() const;
    bool canDrive() const override;
