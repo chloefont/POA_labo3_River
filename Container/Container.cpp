@@ -3,8 +3,10 @@
 //
 
 #include "Container.h"
-
 #include <utility>
+#include <algorithm>
+
+using namespace std;
 
 Container::Container(std::string  name) : name(std::move(name)){
 }
@@ -18,5 +20,18 @@ std::string Container::getName() const {
 }
 
 void Container::addPerson(Person *person) {
-   persons.push_back(person);
+   if (!personInContainer(person))
+      persons.push_back(person);
+}
+
+void Container::removePerson(Person *person) {
+   persons.remove(person);
+}
+
+size_t Container::getNbPeople() const {
+   return persons.size();
+}
+
+bool Container::personInContainer(Person *person) {
+   return find(persons.begin(), persons.end(), person) != persons.end();
 }

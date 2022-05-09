@@ -7,8 +7,7 @@
 #include "Mother.hpp"
 using namespace std;
 bool Mother::check() const {
-   throw logic_error("Function not yet implemented");
-   return false;
+   return true;
 }
 
 Mother::Mother(std::string name) : Parent(std::move(name)) {

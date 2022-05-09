@@ -16,16 +16,18 @@
 using namespace std;
 
 Controller::Controller() {
-   boat = new Boat("Bateau", leftBank);
    leftBank = new Bank("Gauche");
    rightBank = new Bank("Droite");
+   boat = new Boat("Bateau", leftBank, BOAT_SIZE);
 
    initPersons();
-   turn = 0;
-   gameFinished = false;
+   initStateVar();
+}
 
-   showMenu();
-   display();
+void Controller::start() {
+   showWelcome();
+   while (!gameFinished)
+      nextTurn();
 }
 
 void Controller::showMenu() const {
@@ -54,6 +56,7 @@ void Controller::nextTurn() {
    executeCommand();
    display();
 
+   checkGameState();
    turn++;
 }
 
@@ -82,7 +85,7 @@ void Controller::printBoat(Bank* bank) const {
       return;
    }
 
-   cout << "Bateau : ";
+   cout << boat->getName() << " : ";
    for (Person* p : boat->getPersons())
       cout << p->getName() << " ";
    cout << endl;
@@ -90,7 +93,7 @@ void Controller::printBoat(Bank* bank) const {
 
 void Controller::printBoundary(char sep) const {
    cout.fill(sep);
-   cout.width (gameSize);
+   cout.width (GAME_SIZE);
    cout << "" << endl;
    cout.fill(' ');
 }
@@ -121,7 +124,7 @@ void Controller::initPersons() {
 
 void Controller::executeCommand() {
    string command;
-   bool valid = false;
+   bool nextTurn = false;
 
    do {
       cout << turn << "> ";
@@ -131,8 +134,6 @@ void Controller::executeCommand() {
          printError("commande invalide");
          continue;
       }
-
-      valid = true;
       string personName;
 
       switch (command[0]) {
@@ -144,9 +145,9 @@ void Controller::executeCommand() {
             Person* person = getPerson(personName);
             if (person == nullptr) {
                printError("personne introuvable");
-               valid = false;
             } else {
                embark(person);
+               nextTurn = true;
             }
             break;
          }
@@ -155,17 +156,19 @@ void Controller::executeCommand() {
             Person* person = getPerson(personName);
             if (person == nullptr) {
                printError("personne introuvable");
-               valid = false;
             } else {
-               embark(person);
+               land(person);
+               nextTurn = true;
             }
             break;
          }
          case 'm':
             moveBoat();
+            nextTurn = true;
             break;
          case 'r':
             reset();
+            nextTurn = true;
             break;
          case 'q':
             break;
@@ -173,26 +176,29 @@ void Controller::executeCommand() {
             showMenu();
             break;
          default:
-            valid = false;
             printError("commande invalide");
       }
 
-   } while (!valid);
+      cin.clear();
+      cin.ignore(250, '\n');
 
+   } while (!nextTurn);
 }
 
 void Controller::printError(const string &message) {
    cout << "### " << message << endl;
-   cin.clear();
-   cin.ignore(250, '\n');
 }
 
 void Controller::moveBoat() {
-
+   boat->setBank(boat->getBank() == leftBank ? rightBank : leftBank);
 }
 
 void Controller::reset() {
+   Container* containers[2] = {boat, rightBank};
 
+   for (Container* c : containers)
+      for (Person* p : c->getPersons())
+         leftBank->addPerson(p);
 }
 
 Person *Controller::getPerson(const string &name) const {
@@ -205,13 +211,48 @@ Person *Controller::getPerson(const string &name) const {
 }
 
 void Controller::embark(Person *person) {
+   try {
+      // TODO test embarquer qqu sur rive opposée
+      if (boat->getBank()->personInContainer(person)) {
+         if (person->move(*boat)) {
+            boat->addPerson(person);
+            boat->getBank()->removePerson(person);
+         } else {
+            printError("pas possible de deplacer cette personne sur le bateu");
+         }
 
+      } else {
+         printError("la personne selectionnee n'est pas sur la bonne rive");
+      }
+   } catch (const std::exception& e) {
+      printError("le bateau est plein");
+   }
 }
 
 void Controller::land(Person *person) {
+   if (boat->personInContainer(person)) {
+      if (person->move(*boat->getBank())) {
+         boat->getBank()->addPerson(person);
+         boat->removePerson(person);
+      } else {
+         printError("pas possible de deplacer cette personne sur cette rive");
+      }
 
+   } else {
+      printError("la personne selectionnee n'est pas sur le bateau");
+   }
 }
 
 void Controller::checkGameState() {
 
+}
+
+void Controller::initStateVar() {
+   turn = 0;
+   gameFinished = false;
+}
+
+void Controller::showWelcome() const {
+   showMenu();
+   display();
 }

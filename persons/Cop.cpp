@@ -8,7 +8,7 @@
 using namespace std;
 
 bool Cop::check() const {
-   throw logic_error("Function not yet implemented");
+   return true;
 }
 
 Cop::Cop(std::string name) : Person(std::move(name)) {

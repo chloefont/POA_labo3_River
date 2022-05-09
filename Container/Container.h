@@ -16,7 +16,10 @@ public:
    explicit Container(std::string  name);
    std::list<Person*> getPersons() const;
    std::string getName() const;
-   void addPerson(Person* person);
+   virtual void addPerson(Person* person);
+   bool personInContainer(Person* person);
+   void removePerson(Person* person);
+   size_t getNbPeople() const;
 
 private:
    std::string name;

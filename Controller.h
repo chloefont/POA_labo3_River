@@ -12,13 +12,16 @@
 class Controller {
 public:
    Controller();
+   void start();
    void showMenu() const;
+   void showWelcome() const;
    void display() const;
    void nextTurn();
 
 private:
    void reset();
    void initPersons();
+   void initStateVar();
    static void printMenuRow(const std::string& param, const std::string&
    description);
    void printContainer(const Container& container) const;
@@ -40,7 +43,8 @@ private:
    Boat* boat;
    std::list<Person*> persons;
 
-   int gameSize = 70;
+   const size_t GAME_SIZE = 70;
+   const size_t BOAT_SIZE = 2;
    char BANK_SEP = '-';
    char RIVER_SEP = '=';
 };

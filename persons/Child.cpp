@@ -7,7 +7,6 @@
 using namespace std;
 
 bool Child::check() const {
-   throw logic_error("Function not yet implemented");
    return true;
 }
 

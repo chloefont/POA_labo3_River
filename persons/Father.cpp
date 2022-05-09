@@ -8,7 +8,7 @@
 using namespace std;
 
 bool Father::check() const {
-   throw logic_error("Function not yet implemented");
+   return true;
 }
 
 Father::Father(std::string name) : Parent(std::move(name)) {

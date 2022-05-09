@@ -6,8 +6,6 @@ using namespace std;
 
 int main() {
    Controller controller;
-   controller.showMenu();
-   controller.display();
-   controller.nextTurn();
+   controller.start();
    return 0;
 }
