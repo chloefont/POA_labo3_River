@@ -28,6 +28,8 @@ void Controller::start() {
    showWelcome();
    while (!gameFinished)
       nextTurn();
+
+   cout << "Felicitations, vous avez gagne !" << endl;
 }
 
 void Controller::showMenu() const {
@@ -99,13 +101,13 @@ void Controller::printBoundary(char sep) const {
 }
 
 void Controller::initPersons() {
-   Father* father = new Father("pere", nullptr);
-   Mother* mother = new Mother("mere", nullptr);
-   Daughter* julie = new Daughter("julie", father, mother, nullptr);
-   Daughter* jeanne = new Daughter("jeanne", father, mother, nullptr);
-   Son* paul = new Son("paul", father, mother, nullptr);
-   Son* pierre = new Son("pierre", father, mother, nullptr);
-   Cop* cop = new Cop("policier", nullptr);
+   Father* father = new Father("pere", leftBank);
+   Mother* mother = new Mother("mere", leftBank);
+   Daughter* julie = new Daughter("julie", father, mother, leftBank);
+   Daughter* jeanne = new Daughter("jeanne", father, mother, leftBank);
+   Son* paul = new Son("paul", father, mother, leftBank);
+   Son* pierre = new Son("pierre", father, mother, leftBank);
+   Cop* cop = new Cop("policier", leftBank);
    FamilyList family({father, mother, julie, jeanne, paul, pierre});
    Robber* robber = new Robber("robber", family, cop);
 
@@ -146,8 +148,7 @@ void Controller::executeCommand() {
             if (person == nullptr) {
                printError("personne introuvable");
             } else {
-               embark(person);
-               nextTurn = true;
+               nextTurn = embark(person);
             }
             break;
          }
@@ -157,8 +158,7 @@ void Controller::executeCommand() {
             if (person == nullptr) {
                printError("personne introuvable");
             } else {
-               land(person);
-               nextTurn = true;
+               nextTurn = land(person);
             }
             break;
          }
@@ -199,6 +199,8 @@ void Controller::reset() {
    for (Container* c : containers)
       for (Person* p : c->getPersons())
          leftBank->addPerson(p);
+
+   initStateVar();
 }
 
 Person *Controller::getPerson(const string &name) const {
@@ -210,13 +212,14 @@ Person *Controller::getPerson(const string &name) const {
    return nullptr;
 }
 
-void Controller::embark(Person *person) {
+bool Controller::embark(Person *person) {
    try {
       // TODO test embarquer qqu sur rive opposée
       if (boat->getBank()->personInContainer(person)) {
          if (person->move(*boat)) {
             boat->addPerson(person);
             boat->getBank()->removePerson(person);
+            return true;
          } else {
             printError("pas possible de deplacer cette personne sur le bateu");
          }
@@ -226,14 +229,17 @@ void Controller::embark(Person *person) {
       }
    } catch (const std::exception& e) {
       printError("le bateau est plein");
+      return false;
    }
+   return false;
 }
 
-void Controller::land(Person *person) {
+bool Controller::land(Person *person) {
    if (boat->personInContainer(person)) {
       if (person->move(*boat->getBank())) {
          boat->getBank()->addPerson(person);
          boat->removePerson(person);
+         return true;
       } else {
          printError("pas possible de deplacer cette personne sur cette rive");
       }
@@ -241,10 +247,14 @@ void Controller::land(Person *person) {
    } else {
       printError("la personne selectionnee n'est pas sur le bateau");
    }
+
+   return false;
 }
 
 void Controller::checkGameState() {
-
+   if (rightBank->getPersons().size() == persons.size()) {
+      gameFinished = true;
+   }
 }
 
 void Controller::initStateVar() {

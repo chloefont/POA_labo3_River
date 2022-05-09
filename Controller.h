@@ -29,8 +29,8 @@ private:
    void printBoundary(char sep) const;
    void executeCommand();
    static void printError(const std::string& message) ;
-   void embark(Person* person);
-   void land(Person* person);
+   bool embark(Person* person);
+   bool land(Person* person);
    void moveBoat();
    Person* getPerson(const std::string& name) const;
    void checkGameState();
