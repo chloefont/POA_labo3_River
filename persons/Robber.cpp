@@ -3,7 +3,6 @@
 //
 
 #include <stdexcept>
-#include <utility>
 #include "Robber.hpp"
 using namespace std;
 bool Robber::check() const {
@@ -23,7 +22,8 @@ bool Robber::canDrive() const {
 }
 
 Robber::Robber(std::string name, FamilyList family, Cop* cop) : Person
-(std::move(name)), family(std::move(family)), cop(cop) {
+                                                                   (std::move(name),
+                                                                    nullptr), family(std::move(family)), cop(cop) {
 
 }
 

@@ -99,13 +99,13 @@ void Controller::printBoundary(char sep) const {
 }
 
 void Controller::initPersons() {
-   Father* father = new Father("pere");
-   Mother* mother = new Mother("mere");
-   Daughter* julie = new Daughter("julie", father, mother);
-   Daughter* jeanne = new Daughter("jeanne", father, mother);
-   Son* paul = new Son("paul", father, mother);
-   Son* pierre = new Son("pierre", father, mother);
-   Cop* cop = new Cop("policier");
+   Father* father = new Father("pere", nullptr);
+   Mother* mother = new Mother("mere", nullptr);
+   Daughter* julie = new Daughter("julie", father, mother, nullptr);
+   Daughter* jeanne = new Daughter("jeanne", father, mother, nullptr);
+   Son* paul = new Son("paul", father, mother, nullptr);
+   Son* pierre = new Son("pierre", father, mother, nullptr);
+   Cop* cop = new Cop("policier", nullptr);
    FamilyList family({father, mother, julie, jeanne, paul, pierre});
    Robber* robber = new Robber("robber", family, cop);
 

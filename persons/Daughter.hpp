@@ -10,7 +10,8 @@
 
 class Daughter: public Child {
 public:
-   Daughter(std::string name, Father* father, Mother* mother);
+   Daughter(std::string name, Father *father, Mother *mother,
+            Container *actualPosition);
    bool check() const override;
 };
 

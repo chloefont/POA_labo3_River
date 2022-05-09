@@ -3,7 +3,6 @@
 //
 
 #include <stdexcept>
-#include <utility>
 #include "Father.hpp"
 using namespace std;
 
@@ -11,6 +10,6 @@ bool Father::check() const {
    return true;
 }
 
-Father::Father(std::string name) : Parent(std::move(name)) {
+Father::Father(std::string name, Container *actualPosition) : Parent(std::move(name), actualPosition) {
 
 }
