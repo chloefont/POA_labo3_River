@@ -14,7 +14,6 @@ public:
    Controller();
    void start();
    void showMenu() const;
-   void showWelcome() const;
    void display() const;
    void nextTurn();
 
@@ -37,6 +36,7 @@ private:
 
    int turn;
    bool gameFinished;
+   bool gameWon;
 
    Bank* leftBank;
    Bank* rightBank;

@@ -8,7 +8,7 @@
 TEST_CASE( "Daughter" ) {
    Bank bankLeft("Left");
    Bank bankRight("Right");
-   Boat boat("Boat", &bankLeft);
+   Boat boat("Boat", &bankLeft, 2);
 
    Father father("Father", &bankLeft);
    Mother mother("Mother", &bankLeft);
@@ -64,6 +64,18 @@ TEST_CASE( "Daughter" ) {
       SECTION("Move back to left bank should be ok"){
          REQUIRE(daughter.move(boat));
          REQUIRE(daughter.move(bankLeft));
+      }
+   }
+
+   SECTION("Cannot stay with father if mother is not there"){
+      SECTION("Move to boat should be ok") {
+         CHECK(mother.move(boat) == false);
+      }
+   }
+
+   SECTION("Can stay with mother if father is not there"){
+      SECTION("Move to boat should be ok") {
+         CHECK(father.move(boat) == true);
       }
    }
 

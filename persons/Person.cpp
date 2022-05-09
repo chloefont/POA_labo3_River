@@ -26,10 +26,14 @@ Container *Person::getActualContainer() const {
 bool Person::move(Container &to) {
    auto old = actualContainer;
    actualContainer = &to;
+
    if(!check()){
       actualContainer = old;
       return false;
    }
+
+   old->removePerson(this);
+   to.addPerson(this);
    return true;
 }
 

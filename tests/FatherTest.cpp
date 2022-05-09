@@ -6,7 +6,7 @@
 TEST_CASE( "Father" ) {
    Bank bankLeft("Left");
    Bank bankRight("Right");
-   Boat boat("Boat", &bankLeft);
+   Boat boat("Boat", &bankLeft, 2);
 
    Father father("Father", &bankLeft);
 

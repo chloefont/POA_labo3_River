@@ -25,11 +25,12 @@ Controller::Controller() {
 }
 
 void Controller::start() {
-   showWelcome();
+   showMenu();
    while (!gameFinished)
       nextTurn();
 
-   cout << "Felicitations, vous avez gagne !" << endl;
+   if (gameWon)
+      cout << "Felicitations, vous avez gagne !" << endl;
 }
 
 void Controller::showMenu() const {
@@ -55,8 +56,8 @@ void Controller::display() const {
 }
 
 void Controller::nextTurn() {
-   executeCommand();
    display();
+   executeCommand();
 
    checkGameState();
    turn++;
@@ -171,6 +172,8 @@ void Controller::executeCommand() {
             nextTurn = true;
             break;
          case 'q':
+            gameFinished = true;
+            nextTurn = true;
             break;
          case 'h':
             showMenu();
@@ -217,8 +220,6 @@ bool Controller::embark(Person *person) {
       // TODO test embarquer qqu sur rive opposée
       if (boat->getBank()->personInContainer(person)) {
          if (person->move(*boat)) {
-            boat->addPerson(person);
-            boat->getBank()->removePerson(person);
             return true;
          } else {
             printError("pas possible de deplacer cette personne sur le bateu");
@@ -237,8 +238,6 @@ bool Controller::embark(Person *person) {
 bool Controller::land(Person *person) {
    if (boat->personInContainer(person)) {
       if (person->move(*boat->getBank())) {
-         boat->getBank()->addPerson(person);
-         boat->removePerson(person);
          return true;
       } else {
          printError("pas possible de deplacer cette personne sur cette rive");
@@ -254,15 +253,13 @@ bool Controller::land(Person *person) {
 void Controller::checkGameState() {
    if (rightBank->getPersons().size() == persons.size()) {
       gameFinished = true;
+      gameWon = true;
    }
 }
 
 void Controller::initStateVar() {
    turn = 0;
    gameFinished = false;
+   gameWon = false;
 }
 
-void Controller::showWelcome() const {
-   showMenu();
-   display();
-}

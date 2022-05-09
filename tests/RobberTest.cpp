@@ -9,7 +9,7 @@
 TEST_CASE( "Robber" ) {
    Bank bankLeft("Left");
    Bank bankRight("Right");
-   Boat boat("Boat", &bankLeft);
+   Boat boat("Boat", &bankLeft, 2);
 
    Father father("Father", &bankLeft);
    Mother mother("mother", &bankLeft);
