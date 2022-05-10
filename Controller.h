@@ -23,7 +23,6 @@ private:
    void initStateVar();
    static void printMenuRow(const std::string& param, const std::string&
    description);
-   void printContainer(const Container& container) const;
    void printBoat(Bank* bank) const;
    void printBoundary(char sep) const;
    void executeCommand();

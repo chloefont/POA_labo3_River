@@ -45,13 +45,13 @@ void Controller::showMenu() const {
 
 void Controller::display() const {
    printBoundary(BANK_SEP);
-   printContainer(*leftBank);
+   cout << *leftBank;
    printBoundary(BANK_SEP);
    printBoat(leftBank);
    printBoundary(RIVER_SEP);
    printBoat(rightBank);
    printBoundary(BANK_SEP);
-   printContainer(*rightBank);
+   cout << *rightBank;
    printBoundary(BANK_SEP);
 }
 
@@ -68,30 +68,13 @@ description) {
    cout << left << setw(8) << param << " : " << description << endl;
 }
 
-void Controller::printContainer(const Container& container) const {
-   cout << container.getName() << " : ";
-
-   if (container.getPersons().empty()) {
-      cout << endl;
-      return;
-   }
-
-   for (Person* p : container.getPersons())
-      cout << p->getName() << " ";
-
-   cout << endl;
-}
-
 void Controller::printBoat(Bank* bank) const {
    if (bank != boat->getBank()) {
       cout << endl;
       return;
    }
 
-   cout << boat->getName() << " : ";
-   for (Person* p : boat->getPersons())
-      cout << p->getName() << " ";
-   cout << endl;
+   cout << *boat;
 }
 
 void Controller::printBoundary(char sep) const {

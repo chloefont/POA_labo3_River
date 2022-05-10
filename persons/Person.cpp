@@ -6,7 +6,7 @@
 #include "Person.hpp"
 
 using namespace std;
-//TODO override operator<<
+
 Person::Person(std::string name, Container *actualPosition) : name(std::move(name)) {
    actualContainer = actualPosition;
 }

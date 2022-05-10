@@ -5,6 +5,7 @@
 #include "Container.h"
 #include <utility>
 #include <algorithm>
+#include <iostream>
 
 using namespace std;
 
@@ -37,4 +38,19 @@ size_t Container::getNbPeople() const {
 
 bool Container::personInContainer(Person *person) {
    return find(persons.begin(), persons.end(), person) != persons.end();
+}
+
+std::ostream &operator<<(ostream &os, const Container &container) {
+   os << container.getName() << " : ";
+
+   if (container.getPersons().empty()) {
+      os << endl;
+      return os;
+   }
+
+   for (Person* p : container.getPersons())
+      os << p->getName() << " ";
+
+   os << endl;
+   return os;
 }
