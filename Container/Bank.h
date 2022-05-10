@@ -5,16 +5,23 @@
 #ifndef LABO4_RIVER_BANK_H
 #define LABO4_RIVER_BANK_H
 
-
 #include "Container.h"
 
-class Bank : public Container {
+/**
+ * @brief This class represents a bank.
+ *
+ */
+class Bank : public Container
+{
 public:
-   explicit Bank(const std::string& name);
+   /**
+    * @brief Construct a new Bank object
+    *
+    * @param name The name of the bank.
+    **/
+   explicit Bank(const std::string &name);
 
 private:
-
 };
 
-
-#endif //LABO4_RIVER_BANK_H
+#endif // LABO4_RIVER_BANK_H

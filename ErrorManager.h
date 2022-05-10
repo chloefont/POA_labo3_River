@@ -7,9 +7,17 @@
 
 #include <string>
 
-class ErrorManager {
+/**
+ * @brief This is an interface to manage error messages.
+ */
+class ErrorManager
+{
 public:
-    virtual void manageError(const std::string& message) = 0;
+    /**
+     * @brief Construct a new ErrorManager object
+     * @param name The error message.
+     **/
+    virtual void manageError(const std::string &message) = 0;
 };
 
-#endif //LABO4_RIVER_ERRORMANAGER_H
+#endif // LABO4_RIVER_ERRORMANAGER_H
