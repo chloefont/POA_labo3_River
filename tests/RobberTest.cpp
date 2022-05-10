@@ -11,13 +11,13 @@ TEST_CASE( "Robber" ) {
    Bank bankRight("Right");
    Boat boat("Boat", &bankLeft, 2);
 
-   Father father("Father", &bankLeft);
-   Mother mother("mother", &bankLeft);
-   Son son1("Son1", &father, &mother, &bankLeft);
-   Son son2("Son2", &father, &mother, &bankLeft);
-   Daughter daughter1("Daughter1", &father, &mother, &bankRight);
-   Daughter daughter2("Daughter2", &father, &mother, &bankRight);
-   Cop cop("Cop", &bankLeft);
+   Father father("Father", &bankLeft, nullptr);
+   Mother mother("mother", &bankLeft, nullptr);
+   Son son1("Son1", &father, &mother, &bankLeft, nullptr);
+   Son son2("Son2", &father, &mother, &bankLeft, nullptr);
+   Daughter daughter1("Daughter1", &father, &mother, &bankRight, nullptr);
+   Daughter daughter2("Daughter2", &father, &mother, &bankRight, nullptr);
+   Cop cop("Cop", &bankLeft, nullptr);
    FamilyList familyList = {
       &father,
       &mother,
@@ -26,7 +26,7 @@ TEST_CASE( "Robber" ) {
       &daughter1,
       &daughter2
    };
-   Robber robber("Robber", familyList, &cop, &bankLeft);
+   Robber robber("Robber", familyList, &cop, &bankLeft, nullptr);
 
 
    SECTION("Check()"){
@@ -35,7 +35,7 @@ TEST_CASE( "Robber" ) {
       }
 
       SECTION("Should return false"){
-         Robber robber2("Robber", familyList, &cop, &bankRight);
+         Robber robber2("Robber", familyList, &cop, &bankRight, nullptr);
          CHECK(false == robber2.check());
       }
 

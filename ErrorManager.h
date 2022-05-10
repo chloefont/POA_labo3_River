@@ -10,6 +10,7 @@
 class ErrorManager {
 public:
     virtual void manageError(const std::string& message) = 0;
+    virtual ~ErrorManager() = default;
 };
 
 #endif //LABO4_RIVER_ERRORMANAGER_H

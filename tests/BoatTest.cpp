@@ -16,13 +16,13 @@ TEST_CASE( "Boat" ) {
    Bank rightBank("Droite");
    Boat boat("Bateau", &leftBank, MAX_CAPACITY);
 
-   Father father("Father", &leftBank);
-   Mother mother("Mother", &leftBank);
-   Son son("Son", &father, &mother, &leftBank);
-   Daughter daughter("Daughter", &father, &mother, &leftBank);
+   Father father("Father", &leftBank, nullptr);
+   Mother mother("Mother", &leftBank, nullptr);
+   Son son("Son", &father, &mother, &leftBank, nullptr);
+   Daughter daughter("Daughter", &father, &mother, &leftBank, nullptr);
    list<Person*> family = {&father, &mother, &son, &daughter};
-   Cop cop("Cop", &leftBank);
-   Robber robber("Robber", family, &cop, &leftBank);
+   Cop cop("Cop", &leftBank, nullptr);
+   Robber robber("Robber", family, &cop, &leftBank, nullptr);
 
    SECTION("getBank()") {
       SECTION("Left bank") {
@@ -31,16 +31,16 @@ TEST_CASE( "Boat" ) {
    }
 
    SECTION("MoveTo()") {
-
+      SECTION("Left bank") {}//TODO
    }
 
    SECTION("addPerson()") {
-
+      //TODO
    }
 
    SECTION("2 persons max on boat") {
-      father.move(boat);
-      mother.move(boat);
+      robber.move(boat);
+      cop.move(boat);
 
       CHECK(boat.getPersons().size() == 2);
       REQUIRE(son.move(boat) == false);

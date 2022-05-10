@@ -175,7 +175,7 @@ void Controller::manageError(const string &message) {
 
 void Controller::moveBoat() {
    if (!boat->moveTo(boat->getBank() == leftBank ? rightBank : leftBank))
-      manageError("impossible de déplacer le bateau");
+      manageError("impossible de deplacer le bateau");
 }
 
 void Controller::reset() {

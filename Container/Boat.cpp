@@ -18,7 +18,6 @@ Bank* Boat::getBank() const {
 bool Boat::addPerson(Person *person) {
    if (getNbPeople() >= capacity)
       return false;
-      //throw runtime_error("le bateau est plein");
 
    Container::addPerson(person);
    return true;

@@ -10,9 +10,9 @@ TEST_CASE( "Daughter" ) {
    Bank bankRight("Right");
    Boat boat("Boat", &bankLeft, 2);
 
-   Father father("Father", &bankLeft);
-   Mother mother("Mother", &bankLeft);
-   Daughter daughter("Daughter", &father, &mother, &bankLeft);
+   Father father("Father", &bankLeft, nullptr);
+   Mother mother("Mother", &bankLeft, nullptr);
+   Daughter daughter("Daughter", &father, &mother, &bankLeft, nullptr);
 
 
    SECTION("Check()"){
@@ -21,8 +21,8 @@ TEST_CASE( "Daughter" ) {
       }
 
       SECTION("Should return false"){
-         Father father2("Father", &bankRight);
-         Daughter daughter2("Daughter", &father2, &mother, &bankRight);
+         Father father2("Father", &bankRight, nullptr);
+         Daughter daughter2("Daughter", &father2, &mother, &bankRight, nullptr);
 
          CHECK(false == daughter2.check());
       }

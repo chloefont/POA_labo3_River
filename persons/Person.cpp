@@ -30,6 +30,12 @@ bool Person::move(Container &to) {
    auto old = actualContainer;
    actualContainer = &to;
    bool canMove = true;
+   if (!to.addPerson(this)) {
+      actualContainer = old;
+      errorManager->manageError("Le bateau est plein");
+      return false;
+   }
+   old->removePerson(this);
 
    for (Person* p : old->getPersons())
       canMove = canMove && p->check();
@@ -37,13 +43,13 @@ bool Person::move(Container &to) {
    for (Person* p : to.getPersons())
       canMove = canMove && p->check();
 
-   canMove = canMove && to.addPerson(this);
 
-   if (canMove) {
-      old->removePerson(this);
 
-   } else {
+   if (!canMove) {
+      actualContainer->removePerson(this);
       actualContainer = old;
+      old->addPerson(this);
+
    }
 
    return canMove;

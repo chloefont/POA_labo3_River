@@ -8,7 +8,7 @@ TEST_CASE( "Mother" ) {
    Bank bankRight("Right");
    Boat boat("Boat", &bankLeft, 2);
 
-   Mother mother("Mother", &bankLeft);
+   Mother mother("Mother", &bankLeft, nullptr);
 
 
    SECTION("check()"){
