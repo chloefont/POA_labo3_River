@@ -16,10 +16,6 @@ TEST_CASE( "Father" ) {
          REQUIRE_NOTHROW(father.check());
       }
 
-      SECTION("Should return false"){
-         CHECK(false == father.check());
-      }
-
       SECTION("Should return true"){
          CHECK(true == father.check());
       }

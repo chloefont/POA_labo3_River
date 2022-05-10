@@ -19,7 +19,9 @@ TEST_CASE( "Son" ) {
       }
 
       SECTION("Should return false"){
-         CHECK(false == son.check());
+         Mother mother2("Mother", &bankRight);
+         Son son2("Son", &father, &mother2, &bankRight);
+         CHECK(false == son2.check());
       }
 
       SECTION("Should return true"){
@@ -67,12 +69,12 @@ TEST_CASE( "Son" ) {
    }
 
    SECTION("Cannot stay with mother if father is not there"){
-      SECTION("Fathe cannot leave her daughter with father") {
-         REQUIRE(mother.move(boat) == false);
+      SECTION("Father cannot leave his son with mother"){
+         REQUIRE(father.move(boat) == false);
       }
 
-      SECTION("Father can leave her daughter with mother"){
-         REQUIRE(father.move(boat) == true);
+      SECTION("Mother can leave her son with father") {
+         REQUIRE(mother.move(boat) == true);
       }
    }
 

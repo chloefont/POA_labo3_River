@@ -21,7 +21,10 @@ TEST_CASE( "Daughter" ) {
       }
 
       SECTION("Should return false"){
-         CHECK(false == daughter.check());
+         Father father2("Father", &bankRight);
+         Daughter daughter2("Daughter", &father2, &mother, &bankRight);
+
+         CHECK(false == daughter2.check());
       }
 
       SECTION("Should return true"){

@@ -35,7 +35,8 @@ TEST_CASE( "Robber" ) {
       }
 
       SECTION("Should return false"){
-         CHECK(false == robber.check());
+         Robber robber2("Robber", familyList, &cop, &bankRight);
+         CHECK(false == robber2.check());
       }
 
       SECTION("Should return true"){
