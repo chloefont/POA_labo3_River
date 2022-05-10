@@ -34,8 +34,9 @@ bool Person::move(Container &to) {
    for (Person* p : to.getPersons())
       canMove = canMove && p->check();
 
-   //TODO tester
-   if (canMove && to.addPerson(this)) {
+   canMove = canMove && to.addPerson(this);
+
+   if (canMove) {
       old->removePerson(this);
 
    } else {
