@@ -12,7 +12,7 @@ class Son : public Child {
 
 
 public:
-   Son(std::string name, Father *father, Mother *mother, Container *actualPosition);
+   Son(std::string name, Father *father, Mother *mother, Container *actualPosition, ErrorManager *errorManager);
    bool check() const override;
 };
 

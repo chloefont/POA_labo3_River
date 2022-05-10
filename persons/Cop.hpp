@@ -10,7 +10,7 @@
 
 class Cop: public Person {
 public:
-   explicit Cop(std::string name, Container *actualPosition);
+   explicit Cop(std::string name, Container *actualPosition, ErrorManager *errorManager);
    bool check() const override;
 };
 

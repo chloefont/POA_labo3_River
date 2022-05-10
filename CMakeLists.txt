@@ -11,11 +11,11 @@ set(PROJECT_FILES Controller.cpp Controller.h persons/Person.cpp
         Container/Container.h Container/Boat.cpp Container/Boat.h
         Container/Bank.h Container/Bank.cpp persons/Child.cpp persons/Child.hpp ui/Renderer.hpp ui/ConsoleRenderer.cpp ui/ConsoleRenderer.hpp)
 
-add_executable(Labo4_RIver main.cpp ${PROJECT_FILES})
+add_executable(Labo4_RIver main.cpp ${PROJECT_FILES} ErrorManager.h)
 
 add_library(Catch2 tests/catch.hpp)
 set_target_properties(Catch2 PROPERTIES LINKER_LANGUAGE CXX)
 add_executable(Test ${PROJECT_FILES} tests/SonTest.cpp
-        tests/DaughterTest.cpp tests/RobberTest.cpp tests/FatherTest.cpp tests/MotherTest.cpp tests/test.cpp tests/BoatTest.cpp)
+        tests/DaughterTest.cpp tests/RobberTest.cpp tests/FatherTest.cpp tests/MotherTest.cpp tests/test.cpp tests/BoatTest.cpp tests/CopTest.cpp)
 
 target_link_libraries(Test Catch2)

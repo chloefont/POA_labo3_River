@@ -15,7 +15,7 @@ class Robber : public Person {
    static const bool CAN_DRIVE = false;
 
 public:
-   explicit Robber(std::string name, FamilyList family, Cop* cop, Container *actualPosition);
+   explicit Robber(std::string name, FamilyList family, Cop* cop, Container *actualPosition, ErrorManager *errorManager);
    bool canDrive() const override;
    bool check() const override;
    FamilyList getFamily() const;

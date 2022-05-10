@@ -8,10 +8,11 @@
 class Container;
 
 #include "../Container/Container.h"
+#include "../ErrorManager.h"
 
 class Person {
 public:
-   explicit Person(std::string name, Container *actualPosition);
+   explicit Person(std::string name, Container *actualPosition, ErrorManager *errorManager);
 
    virtual ~Person() = default;
 
@@ -25,9 +26,13 @@ public:
 
    Container* getActualContainer() const;
 
+protected:
+   ErrorManager* getErrorManager() const;
+
 private:
    static const bool CAN_DRIVE = true;
    Container *actualContainer = nullptr;
+   ErrorManager* errorManager = nullptr;
    std::string name;
 };
 

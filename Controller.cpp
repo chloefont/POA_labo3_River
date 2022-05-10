@@ -85,15 +85,15 @@ void Controller::printBoundary(char sep) const {
 }
 
 void Controller::initPersons() {
-   Father* father = new Father("pere", leftBank);
-   Mother* mother = new Mother("mere", leftBank);
-   Daughter* julie = new Daughter("julie", father, mother, leftBank);
-   Daughter* jeanne = new Daughter("jeanne", father, mother, leftBank);
-   Son* paul = new Son("paul", father, mother, leftBank);
-   Son* pierre = new Son("pierre", father, mother, leftBank);
-   Cop* cop = new Cop("policier", leftBank);
+   Father* father = new Father("pere", leftBank, this);
+   Mother* mother = new Mother("mere", leftBank, this);
+   Daughter* julie = new Daughter("julie", father, mother, leftBank, this);
+   Daughter* jeanne = new Daughter("jeanne", father, mother, leftBank, this);
+   Son* paul = new Son("paul", father, mother, leftBank, this);
+   Son* pierre = new Son("pierre", father, mother, leftBank, this);
+   Cop* cop = new Cop("policier", leftBank, this);
    FamilyList family({father, mother, julie, jeanne, paul, pierre});
-   Robber* robber = new Robber("robber", family, cop, leftBank);
+   Robber* robber = new Robber("robber", family, cop, leftBank, this);
 
    persons.push_back(father);
    persons.push_back(mother);
@@ -104,8 +104,6 @@ void Controller::initPersons() {
    persons.push_back(cop);
    persons.push_back(robber);
 
-   for (Person* p : persons)
-      leftBank->addPerson(p);
 }
 
 void Controller::executeCommand() {
@@ -117,7 +115,7 @@ void Controller::executeCommand() {
       cin >> command;
 
       if (command.length() != 1) {
-         printError("commande invalide");
+         manageError("commande invalide");
          continue;
       }
       string personName;
@@ -130,7 +128,7 @@ void Controller::executeCommand() {
             cin >> personName;
             Person* person = getPerson(personName);
             if (person == nullptr) {
-               printError("personne introuvable");
+               manageError("personne introuvable");
             } else {
                nextTurn = embark(person);
             }
@@ -140,7 +138,7 @@ void Controller::executeCommand() {
             cin >> personName;
             Person* person = getPerson(personName);
             if (person == nullptr) {
-               printError("personne introuvable");
+               manageError("personne introuvable");
             } else {
                nextTurn = land(person);
             }
@@ -162,7 +160,7 @@ void Controller::executeCommand() {
             showMenu();
             break;
          default:
-            printError("commande invalide");
+            manageError("commande invalide");
       }
 
       cin.clear();
@@ -171,13 +169,13 @@ void Controller::executeCommand() {
    } while (!nextTurn);
 }
 
-void Controller::printError(const string &message) {
+void Controller::manageError(const string &message) {
    cout << "### " << message << endl;
 }
 
 void Controller::moveBoat() {
    if (!boat->moveTo(boat->getBank() == leftBank ? rightBank : leftBank))
-      printError("impossible de déplacer le bateau");
+      manageError("impossible de déplacer le bateau");
 }
 
 void Controller::reset() {
@@ -203,12 +201,10 @@ bool Controller::embark(Person *person) {
    if (boat->getBank()->personInContainer(person)) {
       if (person->move(*boat)) {
          return true;
-      } else {
-         printError("pas possible de deplacer cette personne sur le bateu");
       }
 
    } else {
-      printError("la personne selectionnee n'est pas sur la bonne rive");
+      manageError("la personne selectionnee n'est pas sur la bonne rive");
    }
 
    return false;
@@ -219,11 +215,11 @@ bool Controller::land(Person *person) {
       if (person->move(*boat->getBank())) {
          return true;
       } else {
-         printError("pas possible de deplacer cette personne sur cette rive");
+         manageError("pas possible de deplacer cette personne sur cette rive");
       }
 
    } else {
-      printError("la personne selectionnee n'est pas sur le bateau");
+      manageError("la personne selectionnee n'est pas sur le bateau");
    }
 
    return false;

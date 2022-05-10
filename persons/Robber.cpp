@@ -8,10 +8,11 @@ using namespace std;
 bool Robber::check() const {
 
    if(cop->getActualContainer() != getActualContainer()){
-      for(Person* member: family){
-         if(member->getActualContainer() == getActualContainer())
-            return false;
-            //throw runtime_error("le voleur ne peut pas être en contact avec un membre de la famille sans le policier");
+      for(Person* member: family) {
+         if (member->getActualContainer() == getActualContainer()) {}
+         getErrorManager()->manageError("le voleur ne peut pas être en contact "
+                                        "avec un membre de la famille sans le policier");
+         return false;
       }
 
       return true;
@@ -24,9 +25,9 @@ bool Robber::canDrive() const {
    return CAN_DRIVE;
 }
 
-Robber::Robber(std::string name, FamilyList family, Cop* cop, Container *actualPosition) : Person
+Robber::Robber(std::string name, FamilyList family, Cop* cop, Container *actualPosition, ErrorManager *errorManager) : Person
                                                                    (std::move(name),
-                                                                    actualPosition), family
+                                                                    actualPosition, errorManager), family
                                                                     (std::move(family)), cop(cop) {
 
 }

@@ -7,8 +7,11 @@
 
 using namespace std;
 
-Person::Person(std::string name, Container *actualPosition) : name(std::move(name)) {
-   actualContainer = actualPosition;
+Person::Person(std::string name, Container *actualPosition, ErrorManager *errorManager) : name(std::move
+(name)) {
+   this->actualContainer = actualPosition;
+   this->errorManager = errorManager;
+   actualContainer->addPerson(this);
 }
 
 bool Person::canDrive() const {
@@ -44,6 +47,10 @@ bool Person::move(Container &to) {
    }
 
    return canMove;
+}
+
+ErrorManager *Person::getErrorManager() const {
+   return errorManager;
 }
 
 

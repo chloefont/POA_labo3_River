@@ -10,6 +10,7 @@ bool Father::check() const {
    return true;
 }
 
-Father::Father(std::string name, Container *actualPosition) : Parent(std::move(name), actualPosition) {
+Father::Father(std::string name, Container *actualPosition, ErrorManager *errorManager) : Parent(std::move
+(name), actualPosition, errorManager) {
 
 }

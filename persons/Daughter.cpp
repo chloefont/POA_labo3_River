@@ -11,7 +11,8 @@ using namespace std;
 bool Daughter::check() const {
    if(getMother()->getActualContainer() != getActualContainer() &&
       getFather()->getActualContainer() == getActualContainer()){
-      //throw logic_error("la fille ne peut pas rester sans sa mere avec son pere");
+      getErrorManager()->manageError("la fille ne peut pas rester sans sa mere "
+                                     "avec son pere");
       return false;
    }
 
@@ -19,11 +20,10 @@ bool Daughter::check() const {
 }
 
 Daughter::Daughter(std::string name, Father *father, Mother *mother,
-                   Container *actualPosition) : Child
-                                                                          (std::move(
+                   Container *actualPosition, ErrorManager *errorManager) : Child(std::move(
                                                                               name),
                                                                            father,
                                                                            mother,
-                                                                           actualPosition) {
+                                                                           actualPosition, errorManager) {
 
 }

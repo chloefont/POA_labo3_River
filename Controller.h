@@ -8,8 +8,9 @@
 #include <string>
 #include "Container/Bank.h"
 #include "Container/Boat.h"
+#include "ErrorManager.h"
 
-class Controller {
+class Controller : public ErrorManager{
 public:
    Controller();
    void start();
@@ -26,7 +27,7 @@ private:
    void printBoat(Bank* bank) const;
    void printBoundary(char sep) const;
    void executeCommand();
-   static void printError(const std::string& message) ;
+   void manageError(const std::string& message) ;
    bool embark(Person* person);
    bool land(Person* person);
    void moveBoat();
@@ -42,7 +43,7 @@ private:
    Boat* boat;
    std::list<Person*> persons;
 
-   const size_t GAME_SIZE = 70;
+   const long long GAME_SIZE = 70;
    const size_t BOAT_SIZE = 2;
    char BANK_SEP = '-';
    char RIVER_SEP = '=';

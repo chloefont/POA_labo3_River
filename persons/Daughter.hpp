@@ -11,7 +11,7 @@
 class Daughter: public Child {
 public:
    Daughter(std::string name, Father *father, Mother *mother,
-            Container *actualPosition);
+            Container *actualPosition, ErrorManager *errorManager);
    bool check() const override;
 };
 
