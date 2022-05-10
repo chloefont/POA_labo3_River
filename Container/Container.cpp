@@ -19,9 +19,12 @@ std::string Container::getName() const {
    return name;
 }
 
-void Container::addPerson(Person *person) {
-   if (!personInContainer(person))
-      persons.push_back(person);
+bool Container::addPerson(Person *person) {
+   if (personInContainer(person))
+      return false;
+
+   persons.push_back(person);
+   return true;
 }
 
 void Container::removePerson(Person *person) {

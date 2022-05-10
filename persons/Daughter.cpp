@@ -2,13 +2,16 @@
 // Created by cfont on 14.04.2022.
 //
 
+#include <stdexcept>
+#include <utility>
 #include "Daughter.hpp"
 
-#include <utility>
+using namespace std;
 
 bool Daughter::check() const {
    if(getMother()->getActualContainer() != getActualContainer() &&
       getFather()->getActualContainer() == getActualContainer()){
+      //throw logic_error("la fille ne peut pas rester sans sa mere avec son pere");
       return false;
    }
 

@@ -11,7 +11,10 @@ bool Robber::check() const {
       for(Person* member: family){
          if(member->getActualContainer() == getActualContainer())
             return false;
+            //throw runtime_error("le voleur ne peut pas être en contact avec un membre de la famille sans le policier");
       }
+
+      return true;
    }
 
    return true;
@@ -21,9 +24,10 @@ bool Robber::canDrive() const {
    return CAN_DRIVE;
 }
 
-Robber::Robber(std::string name, FamilyList family, Cop* cop) : Person
+Robber::Robber(std::string name, FamilyList family, Cop* cop, Container *actualPosition) : Person
                                                                    (std::move(name),
-                                                                    nullptr), family(std::move(family)), cop(cop) {
+                                                                    actualPosition), family
+                                                                    (std::move(family)), cop(cop) {
 
 }
 

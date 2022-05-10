@@ -110,7 +110,7 @@ void Controller::initPersons() {
    Son* pierre = new Son("pierre", father, mother, leftBank);
    Cop* cop = new Cop("policier", leftBank);
    FamilyList family({father, mother, julie, jeanne, paul, pierre});
-   Robber* robber = new Robber("robber", family, cop);
+   Robber* robber = new Robber("robber", family, cop, leftBank);
 
    persons.push_back(father);
    persons.push_back(mother);
@@ -193,7 +193,8 @@ void Controller::printError(const string &message) {
 }
 
 void Controller::moveBoat() {
-   boat->setBank(boat->getBank() == leftBank ? rightBank : leftBank);
+   if (!boat->moveTo(boat->getBank() == leftBank ? rightBank : leftBank))
+      printError("impossible de déplacer le bateau");
 }
 
 void Controller::reset() {
@@ -211,27 +212,22 @@ Person *Controller::getPerson(const string &name) const {
       if (p->getName() == name)
          return p;
    }
-
    return nullptr;
 }
 
 bool Controller::embark(Person *person) {
-   try {
-      // TODO test embarquer qqu sur rive opposée
-      if (boat->getBank()->personInContainer(person)) {
-         if (person->move(*boat)) {
-            return true;
-         } else {
-            printError("pas possible de deplacer cette personne sur le bateu");
-         }
-
+   // TODO test embarquer qqu sur rive opposée
+   if (boat->getBank()->personInContainer(person)) {
+      if (person->move(*boat)) {
+         return true;
       } else {
-         printError("la personne selectionnee n'est pas sur la bonne rive");
+         printError("pas possible de deplacer cette personne sur le bateu");
       }
-   } catch (const std::exception& e) {
-      printError("le bateau est plein");
-      return false;
+
+   } else {
+      printError("la personne selectionnee n'est pas sur la bonne rive");
    }
+
    return false;
 }
 

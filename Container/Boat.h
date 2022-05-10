@@ -12,8 +12,8 @@ class Boat : public Container {
 public:
    Boat(const std::string& name, Bank* bank, size_t capacity);
    Bank* getBank() const;
-   void setBank(Bank* bank);
-   void addPerson(Person* person) override;
+   bool moveTo(Bank* bank);
+   bool addPerson(Person* person) override;
 
 private:
    Bank* bank;

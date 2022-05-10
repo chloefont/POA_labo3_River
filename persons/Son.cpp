@@ -11,6 +11,7 @@ bool Son::check() const {
    if(getMother()->getActualContainer() == getActualContainer() &&
    getFather()->getActualContainer() != getActualContainer()){
       return false;
+      //throw logic_error("le fils ne peut pas rester sans son pere avec sa mere");
    }
    return true;
 }

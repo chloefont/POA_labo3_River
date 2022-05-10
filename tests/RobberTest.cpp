@@ -15,8 +15,8 @@ TEST_CASE( "Robber" ) {
    Mother mother("mother", &bankLeft);
    Son son1("Son1", &father, &mother, &bankLeft);
    Son son2("Son2", &father, &mother, &bankLeft);
-   Daughter daughter1("Daughter1", &father, &mother, &bankLeft);
-   Daughter daughter2("Daughter2", &father, &mother, &bankLeft);
+   Daughter daughter1("Daughter1", &father, &mother, &bankRight);
+   Daughter daughter2("Daughter2", &father, &mother, &bankRight);
    Cop cop("Cop", &bankLeft);
    FamilyList familyList = {
       &father,
@@ -26,7 +26,7 @@ TEST_CASE( "Robber" ) {
       &daughter1,
       &daughter2
    };
-   Robber robber("Robber", familyList, &cop);
+   Robber robber("Robber", familyList, &cop, &bankLeft);
 
 
    SECTION("Check()"){
@@ -79,6 +79,30 @@ TEST_CASE( "Robber" ) {
       SECTION("Move back to left bank should be ok"){
          REQUIRE(robber.move(boat));
          REQUIRE(robber.move(bankLeft));
+      }
+   }
+
+   SECTION("Cannot be with member of family without policeman"){
+      SECTION("Cannot move to boat with member of family") {
+         son1.move(boat);
+         REQUIRE(robber.move(boat) == true);
+      }
+
+      SECTION("Cannot move to right bank with member of family") {
+         robber.move(boat);
+         cop.move(boat);
+
+         REQUIRE(boat.moveTo(&bankRight) == true);
+         REQUIRE(robber.move(bankRight) == false);
+      }
+
+      SECTION("Can move to right bank with member of family and policeman") {
+         robber.move(boat);
+         cop.move(boat);
+
+         REQUIRE(boat.moveTo(&bankRight) == true);
+         REQUIRE(cop.move(bankRight) == true);
+         REQUIRE(robber.move(bankRight) == true);
       }
    }
 

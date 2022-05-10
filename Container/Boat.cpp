@@ -15,13 +15,25 @@ Bank* Boat::getBank() const {
    return bank;
 }
 
-void Boat::addPerson(Person *person) {
+bool Boat::addPerson(Person *person) {
    if (getNbPeople() >= capacity)
-      throw runtime_error("Boat is full");
+      return false;
+      //throw runtime_error("le bateau est plein");
 
    Container::addPerson(person);
+   return true;
 }
 
-void Boat::setBank(Bank* bank) {
-   this->bank = bank;
+bool Boat::moveTo(Bank* bank) {
+   if (bank == this->bank)
+      return true;
+
+   for (Person* person : getPersons()) {
+      if (person->canDrive()) {
+         this->bank = bank;
+         return true;
+      }
+   }
+
+   return false;
 }

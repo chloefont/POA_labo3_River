@@ -6,7 +6,7 @@
 #include "Person.hpp"
 
 using namespace std;
-
+//TODO override operator<<
 Person::Person(std::string name, Container *actualPosition) : name(std::move(name)) {
    actualContainer = actualPosition;
 }
@@ -26,15 +26,23 @@ Container *Person::getActualContainer() const {
 bool Person::move(Container &to) {
    auto old = actualContainer;
    actualContainer = &to;
+   bool canMove = true;
 
-   if(!check()){
+   for (Person* p : old->getPersons())
+      canMove = canMove && p->check();
+
+   for (Person* p : to.getPersons())
+      canMove = canMove && p->check();
+
+   //TODO tester
+   if (canMove && to.addPerson(this)) {
+      old->removePerson(this);
+
+   } else {
       actualContainer = old;
-      return false;
    }
 
-   old->removePerson(this);
-   to.addPerson(this);
-   return true;
+   return canMove;
 }
 
 

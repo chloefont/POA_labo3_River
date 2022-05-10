@@ -67,14 +67,12 @@ TEST_CASE( "Son" ) {
    }
 
    SECTION("Cannot stay with mother if father is not there"){
-      SECTION("Move to boat should be ok") {
-         CHECK(father.move(boat) == false);
+      SECTION("Fathe cannot leave her daughter with father") {
+         REQUIRE(mother.move(boat) == false);
       }
-   }
 
-   SECTION("Can stay with father if mother is not there"){
-      SECTION("Move to boat should be ok") {
-         CHECK(mother.move(boat) == true);
+      SECTION("Father can leave her daughter with mother"){
+         REQUIRE(father.move(boat) == true);
       }
    }
 
