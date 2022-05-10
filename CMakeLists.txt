@@ -9,7 +9,7 @@ set(PROJECT_FILES Controller.cpp Controller.h persons/Person.cpp
         persons/Father.hpp persons/Son.cpp persons/Son.hpp persons/Daughter.cpp
         persons/Daughter.hpp persons/Robber.cpp persons/Robber.hpp Container/Container.cpp
         Container/Container.h Container/Boat.cpp Container/Boat.h
-        Container/Bank.h Container/Bank.cpp persons/Child.cpp persons/Child.hpp)
+        Container/Bank.h Container/Bank.cpp persons/Child.cpp persons/Child.hpp ui/Renderer.hpp ui/ConsoleRenderer.cpp ui/ConsoleRenderer.hpp)
 
 add_executable(Labo4_RIver main.cpp ${PROJECT_FILES})
 
