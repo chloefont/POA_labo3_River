@@ -1,13 +1,9 @@
-//
-// Created by cfont on 05.05.2022.
-//
-
 #include <stdexcept>
-#include "Boat.h"
+#include "Boat.hpp"
 
 using namespace std;
 
-Boat::Boat(const std::string& name, Bank* bank, size_t capacity) : Container(name),
+Boat::Boat(string name, Bank* bank, size_t capacity) : Container(move(name)),
 bank(bank), capacity(capacity) {
 }
 

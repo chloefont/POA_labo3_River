@@ -1,7 +1,3 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
 #include <stdexcept>
 #include "Son.hpp"
 
@@ -13,7 +9,7 @@ Son::Son(string name, Father *father, Mother *mother, Container *actualPosition,
            father, mother, actualPosition, errorManager) {}
 
 Father *Son::getFather() const {
-   return (Father *)(getPrefferedParent());
+   return (Father *)(getPreferredParent());
 }
 
 Mother *Son::getMother() const {

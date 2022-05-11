@@ -1,10 +1,5 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
 #ifndef LABO4_RIVER_SON_HPP
 #define LABO4_RIVER_SON_HPP
-
 
 #include "Child.hpp"
 
@@ -15,8 +10,8 @@ public:
    /**
     * Son constructor
     * @param name Son's name.
-    * @param father Son's parent1.
-    * @param mother Son's parent2.
+    * @param father Son's preferredParent.
+    * @param mother Son's secondParent.
     * @param actualPosition Son's actual position
     * @param errorManager The error manager.
     */

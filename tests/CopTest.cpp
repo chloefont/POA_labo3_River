@@ -1,7 +1,7 @@
 #include "catch.hpp"
 #include "../persons/Cop.hpp"
-#include "../Container/Bank.h"
-#include "../Container/Boat.h"
+#include "../Container/Bank.hpp"
+#include "../Container/Boat.hpp"
 
 TEST_CASE("Cop") {
    const size_t MAX_CAPACITY = 2;

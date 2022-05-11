@@ -1,8 +1,4 @@
-//
-// Created by cfont on 05.05.2022.
-//
-
-#include "Container.h"
+#include "Container.hpp"
 #include <utility>
 #include <algorithm>
 #include <iostream>
@@ -62,4 +58,8 @@ std::ostream &operator<<(ostream &os, const Container &container)
 
    os << endl;
    return os;
+}
+
+void Container::removeAllPersons() {
+   persons.clear();
 }

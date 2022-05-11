@@ -1,35 +1,36 @@
-//
-// Created by luca on 05/05/22.
-//
-
 #include <stdexcept>
 #include "Child.hpp"
 using namespace std;
 
+Child::Child(string name, Parent *preferredParent, Parent *secondParent,
+             Container *actualPosition, ErrorManager *errorManager) :
+   Person(std::move(name),actualPosition, errorManager),
+   preferredParent(preferredParent), secondParent(secondParent) {
+
+    if (preferredParent == nullptr || secondParent == nullptr) {
+        throw invalid_argument("Parent cannot be nullptr");
+    }
+}
+
 bool Child::check() const {
-   if(parent2->getActualContainer() == getActualContainer() &&
-      parent1->getActualContainer() != getActualContainer()){
+   if(secondParent->getActualContainer() == getActualContainer() &&
+      preferredParent->getActualContainer() != getActualContainer()){
       if (getErrorManager() != nullptr)
-         getErrorManager()->manageError(getName() + " ne peut pas rester sans son "
-                                                  + parent1->getName() +
-                                        "avec " + parent2->getName());
+         getErrorManager()->manageError(getName() + " ne peut pas rester sans  "
+                                        + preferredParent->getName() + " avec " +
+                                        secondParent->getName());
       return false;
    }
    return true;
 }
 
-Parent* Child::getPrefferedParent() const {
-   return parent1;
+Parent* Child::getPreferredParent() const {
+   return preferredParent;
 }
 
 Parent* Child::getSecondParent() const {
-   return parent2;
+   return secondParent;
 }
-
-Child::Child(string name, Parent *parent1, Parent *parent2,
-             Container *actualPosition, ErrorManager *errorManager) : Person(std::move(name),
-                                                 actualPosition, errorManager),
-                                                                      parent1(parent1), parent2(parent2) {}
 
 bool Child::canDrive() const {
    return CAN_DRIVE;

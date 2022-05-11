@@ -1,7 +1,3 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
 #ifndef LABO4_RIVER_DAUGHTER_HPP
 #define LABO4_RIVER_DAUGHTER_HPP
 
@@ -11,10 +7,10 @@
 class Daughter: public Child {
 public:
    /**
-    * Daughter construcotr.
+    * Daughter constructor.
     * @param name Daughter's name.
-    * @param father Daughter's parent1.
-    * @param mother Daughter's parent2.
+    * @param father Daughter's preferredParent.
+    * @param mother Daughter's secondParent.
     * @param actualPosition Daughter's position.
     * @param errorManager The errorManager.
     */

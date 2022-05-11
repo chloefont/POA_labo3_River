@@ -1,8 +1,4 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
-#include "Controller.h"
+#include "Controller.hpp"
 #include "persons/Father.hpp"
 #include "persons/Mother.hpp"
 #include "persons/Daughter.hpp"
@@ -92,8 +88,9 @@ void Controller::initPersons() {
    Son* paul = new Son("paul", father, mother, leftBank, this);
    Son* pierre = new Son("pierre", father, mother, leftBank, this);
    Cop* cop = new Cop("policier", leftBank, this);
+   //TODO liste éliminée après fonction ?
    FamilyList family({father, mother, julie, jeanne, paul, pierre});
-   Robber* robber = new Robber("robber", family, cop, leftBank, this);
+   Robber* robber = new Robber("voleur", family, cop, leftBank, this);
 
    persons.push_back(father);
    persons.push_back(mother);
@@ -179,13 +176,15 @@ void Controller::moveBoat() {
 }
 
 void Controller::reset() {
-   Container* containers[2] = {boat, rightBank};
+   boat->removeAllPersons();
+   leftBank->removeAllPersons();
+   rightBank->removeAllPersons();
 
-   for (Container* c : containers)
-      for (Person* p : c->getPersons())
-         leftBank->addPerson(p);
+   deletePersons();
 
+   initPersons();
    initStateVar();
+   display();
 }
 
 Person *Controller::getPerson(const string &name) const {
@@ -230,5 +229,19 @@ void Controller::initStateVar() {
    turn = 0;
    gameFinished = false;
    gameWon = false;
+}
+
+Controller::~Controller() {
+   deletePersons();
+
+   delete boat;
+   delete leftBank;
+   delete rightBank;
+}
+
+void Controller::deletePersons() {
+   for (Person* p : persons)
+      delete p;
+   persons.clear();
 }
 

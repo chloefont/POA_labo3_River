@@ -1,11 +1,7 @@
-//
-// Created by cfont on 05.05.2022.
-//
+#ifndef LABO4_RIVER_BANK_HPP
+#define LABO4_RIVER_BANK_HPP
 
-#ifndef LABO4_RIVER_BANK_H
-#define LABO4_RIVER_BANK_H
-
-#include "Container.h"
+#include "Container.hpp"
 
 /**
  * @brief This class represents a bank.
@@ -19,9 +15,9 @@ public:
     *
     * @param name The name of the bank.
     **/
-   explicit Bank(const std::string &name);
+   explicit Bank(std::string name);
 
 private:
 };
 
-#endif // LABO4_RIVER_BANK_H
+#endif // LABO4_RIVER_BANK_HPP

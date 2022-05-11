@@ -1,7 +1,3 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
 #ifndef LABO4_RIVER_COP_H
 #define LABO4_RIVER_COP_H
 
@@ -17,6 +13,7 @@ public:
     * @param errorManager The error manager.
     */
    explicit Cop(std::string name, Container *actualPosition, ErrorManager *errorManager);
+
    bool check() const override;
 };
 

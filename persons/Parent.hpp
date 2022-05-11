@@ -1,7 +1,3 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
 #ifndef LABO4_RIVER_PARENT_HPP
 #define LABO4_RIVER_PARENT_HPP
 
@@ -10,6 +6,9 @@
 
 class Parent: public Person {
 public:
+   bool check() const override;
+
+protected:
    /**
     *
     * @param name Parent's name
@@ -17,7 +16,6 @@ public:
     * @param errorManager The error manager
     */
    explicit Parent(std::string name, Container *actualPosition, ErrorManager *errorManager);
-   bool check() const override;
 };
 
 

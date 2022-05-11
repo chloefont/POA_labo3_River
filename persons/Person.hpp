@@ -1,19 +1,13 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
 #ifndef LABO4_RIVER_PERSON_HPP
 #define LABO4_RIVER_PERSON_HPP
 
-class Container;
+#include "../Container/Container.hpp"
+#include "../ErrorManager.hpp"
 
-#include "../Container/Container.h"
-#include "../ErrorManager.h"
+class Container;
 
 class Person {
 public:
-   explicit Person(std::string name, Container *actualPosition, ErrorManager *errorManager);
-
    virtual ~Person() = default;
 
 
@@ -59,6 +53,9 @@ public:
     * @return ErrorManager* 
     */
    ErrorManager* getErrorManager() const;
+
+protected:
+   explicit Person(std::string name, Container *actualPosition, ErrorManager *errorManager);
 
 private:
    static const bool CAN_DRIVE = true;
