@@ -5,5 +5,5 @@ using namespace std;
 int main() {
    Controller controller;
    controller.start();
-   return 0;
+   return EXIT_SUCCESS;
 }
