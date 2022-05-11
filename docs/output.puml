@@ -1,0 +1,233 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class Bank {
+	+Bank(const std::string& name)
+}
+
+
+class Boat {
+	+Boat(const std::string& name, Bank* bank, size_t capacity)
+	-bank : Bank*
+	+getBank() : Bank* {query}
+	+addPerson(Person* person) : bool
+	+moveTo(Bank* bank) : bool
+	-capacity : size_t
+}
+
+
+class Child {
+	#Child(std::string name, Parent* parent1, Parent* parent2, Container* actualPosition, ErrorManager* errorManager)
+	+getPrefferedParent() : Parent* {query}
+	+getSecondParent() : Parent* {query}
+	-parent1 : Parent*
+	-parent2 : Parent*
+	+canDrive() : bool {query}
+	+check() : bool {query}
+	-{static} CAN_DRIVE : static const bool
+}
+
+
+class Container {
+	+Container(std::string name)
+	+addPerson(Person* person) : bool
+	+personInContainer(Person* person) : bool {query}
+	+getNbPeople() : size_t {query}
+	+operator<<(std::ostream& os, const Container& dt) : std :: ostream&
+	+getPersons() : std::list<Person*> {query}
+	-persons : std::list<Person*>
+	+getName() : std::string {query}
+	-name : std::string
+	+removePerson(Person* person) : void
+}
+
+
+class Controller {
+	+Controller()
+	-leftBank : Bank*
+	-rightBank : Bank*
+	-boat : Boat*
+	-getPerson(const std::string& name) : Person* {query}
+	-embark(Person* person) : bool
+	-gameFinished : bool
+	-gameWon : bool
+	-land(Person* person) : bool
+	-BANK_SEP : char
+	-RIVER_SEP : char
+	-GAME_SIZE : const long long
+	-BOAT_SIZE : const size_t
+	-turn : int
+	-persons : std::list<Person*>
+	-checkGameState() : void
+	+display() : void {query}
+	-executeCommand() : void
+	-initPersons() : void
+	-initStateVar() : void
+	-manageError(const std::string& message) : void
+	-moveBoat() : void
+	-nextTurn() : void
+	-printBoat(Bank* bank) : void {query}
+	-printBoundary(char sep) : void {query}
+	-{static} printMenuRow(const std::string& param, const std::string& description) : void
+	-reset() : void
+	+showMenu() : void {query}
+	+start() : void
+}
+
+
+class Cop {
+	+Cop(std::string name, Container* actualPosition, ErrorManager* errorManager)
+	+check() : bool {query}
+}
+
+
+class Daughter {
+	+Daughter(std::string name, Father* father, Mother* mother, Container* actualPosition, ErrorManager* errorManager)
+	+getFather() : Father* {query}
+	+getMother() : Mother* {query}
+}
+
+
+abstract class ErrorManager {
+	+~ErrorManager()
+	+{abstract} manageError(const std::string& message) : void
+}
+
+
+class Father {
+	+Father(std::string name, Container* actualPosition, ErrorManager* errorManager)
+	+check() : bool {query}
+}
+
+
+class Mother {
+	+Mother(std::string name, Container* actualPosition, ErrorManager* errorManager)
+	+check() : bool {query}
+}
+
+
+class Parent {
+	+Parent(std::string name, Container* actualPosition, ErrorManager* errorManager)
+	+check() : bool {query}
+}
+
+
+abstract class Person {
+	+Person(std::string name, Container* actualPosition, ErrorManager* errorManager)
+	+~Person()
+	-actualContainer : Container*
+	+getActualContainer() : Container* {query}
+	-errorManager : ErrorManager*
+	+getErrorManager() : ErrorManager* {query}
+	+canDrive() : bool {query}
+	+{abstract} check() : bool {query}
+	+move(Container& to) : bool
+	-{static} CAN_DRIVE : static const bool
+	+getName() : std::string {query}
+	-name : std::string
+}
+
+
+class Robber {
+	+Robber(std::string name, FamilyList family, Cop* cop, Container* actualPosition, ErrorManager* errorManager)
+	-cop : Cop*
+	+getCop() : Cop* {query}
+	+getFamily() : FamilyList {query}
+	+canDrive() : bool {query}
+	+check() : bool {query}
+	-family : const FamilyList
+	-{static} CAN_DRIVE : static const bool
+}
+
+
+class Son {
+	+Son(std::string name, Father* father, Mother* mother, Container* actualPosition, ErrorManager* errorManager)
+	+getFather() : Father* {query}
+	+getMother() : Mother* {query}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+.Child <|-- .Daughter
+
+
+.Child <|-- .Son
+
+
+.Container <|-- .Bank
+
+
+.Container <|-- .Boat
+
+
+.ErrorManager <|-- .Controller
+
+
+.Parent <|-- .Father
+
+
+.Parent <|-- .Mother
+
+
+.Person <|-- .Child
+
+
+.Person <|-- .Cop
+
+
+.Person <|-- .Parent
+
+
+.Person <|-- .Robber
+
+
+
+
+
+/' Aggregation relationships '/
+
+.Boat o-- .Bank
+
+
+.Child "2" o-- .Parent
+
+
+.Container o-- .Person
+
+
+.Controller "2" o-- .Bank
+
+
+.Controller o-- .Boat
+
+
+.Controller o-- .Person
+
+
+.Person o-- .Container
+
+
+.Person o-- .ErrorManager
+
+
+.Robber o-- .Cop
+
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml
