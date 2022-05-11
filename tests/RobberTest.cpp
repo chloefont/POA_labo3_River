@@ -73,10 +73,6 @@ TEST_CASE( "Robber" ) {
          REQUIRE(robber.move(boat));
       }
 
-      SECTION("Move to right bank should be ok"){
-         REQUIRE(robber.move(bankRight));
-      }
-
       SECTION("Move back to left bank should be ok"){
          REQUIRE(robber.move(boat));
          REQUIRE(robber.move(bankLeft));
@@ -86,7 +82,7 @@ TEST_CASE( "Robber" ) {
    SECTION("Cannot be with member of family without policeman"){
       SECTION("Cannot move to boat with member of family") {
          son1.move(boat);
-         REQUIRE(robber.move(boat) == true);
+         REQUIRE(robber.move(boat) == false);
       }
 
       SECTION("Cannot move to right bank with member of family") {
