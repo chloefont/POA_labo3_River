@@ -37,7 +37,7 @@ public:
     * 
     * @return true if it can.
     */
-   virtual bool check() const = 0;
+   virtual bool check() const;
 
    /**
     * @brief Get the Actual Container where the person is.

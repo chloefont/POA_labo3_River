@@ -59,4 +59,8 @@ ErrorManager *Person::getErrorManager() const {
    return errorManager;
 }
 
+bool Person::check() const {
+   return true;
+}
+
 

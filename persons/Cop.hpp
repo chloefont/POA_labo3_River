@@ -13,8 +13,6 @@ public:
     * @param errorManager The error manager.
     */
    explicit Cop(std::string name, Container *actualPosition, ErrorManager *errorManager);
-
-   bool check() const override;
 };
 
 

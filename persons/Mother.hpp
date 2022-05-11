@@ -13,8 +13,6 @@ public:
     * @param errorManager the error manager
     */
    explicit Mother(std::string name, Container *actualPosition, ErrorManager *errorManager);
-
-   bool check() const override;
 };
 
 

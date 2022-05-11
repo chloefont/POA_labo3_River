@@ -6,7 +6,6 @@
 
 class Parent: public Person {
 public:
-   bool check() const override;
 
 protected:
    /**

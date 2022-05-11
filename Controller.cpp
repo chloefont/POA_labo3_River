@@ -26,10 +26,13 @@ void Controller::start() {
       nextTurn();
 
    if (gameWon)
-      cout << "Felicitations, vous avez gagne !" << endl;
+      cout << "Felicitations, vous avez gagne en " << to_string(turn) << " coups !"
+      << endl;
+   //TODO faire en sorte qu'on puisse redémarrer
+   reset();
 }
 
-void Controller::showMenu() const {
+void Controller::showMenu() {
    printMenuRow("p", "afficher");
    printMenuRow("e <nom>", "embarquer <nom>");
    printMenuRow("d <nom>", "debarquer <nom>");
@@ -52,11 +55,11 @@ void Controller::display() const {
 }
 
 void Controller::nextTurn() {
+   turn++;
    display();
    executeCommand();
 
    checkGameState();
-   turn++;
 }
 
 void Controller::printMenuRow(const std::string& param, const std::string&
@@ -91,7 +94,6 @@ void Controller::initPersons() {
    Son* paul = new Son("paul", father, mother, leftBank, this);
    Son* pierre = new Son("pierre", father, mother, leftBank, this);
    Cop* cop = new Cop("policier", leftBank, this);
-   //TODO liste éliminée après fonction ?
    FamilyList family({father, mother, julie, jeanne, paul, pierre});
    Robber* robber = new Robber("voleur", family, cop, leftBank, this);
 
@@ -108,7 +110,7 @@ void Controller::initPersons() {
 
 void Controller::executeCommand() {
    string command;
-   bool nextTurn = false;
+   bool turnFinished = false;
 
    do {
       cout << turn << "> ";
@@ -130,7 +132,7 @@ void Controller::executeCommand() {
             if (person == nullptr) {
                manageError("personne introuvable");
             } else {
-               nextTurn = embark(person);
+               turnFinished = embark(person);
             }
             break;
          }
@@ -140,21 +142,21 @@ void Controller::executeCommand() {
             if (person == nullptr) {
                manageError("personne introuvable");
             } else {
-               nextTurn = land(person);
+               turnFinished = land(person);
             }
             break;
          }
          case 'm':
             moveBoat();
-            nextTurn = true;
+            turnFinished = true;
             break;
          case 'r':
             reset();
-            nextTurn = true;
+            turnFinished = true;
             break;
          case 'q':
             gameFinished = true;
-            nextTurn = true;
+            turnFinished = true;
             break;
          case 'h':
             showMenu();
@@ -166,7 +168,7 @@ void Controller::executeCommand() {
       cin.clear();
       cin.ignore(250, '\n');
 
-   } while (!nextTurn);
+   } while (!turnFinished);
 }
 
 void Controller::manageError(const string &message) {
@@ -187,7 +189,6 @@ void Controller::reset() {
 
    initPersons();
    initStateVar();
-   display();
 }
 
 Person *Controller::getPerson(const string &name) const {

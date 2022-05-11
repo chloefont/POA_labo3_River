@@ -23,7 +23,7 @@ public:
    /**
     * @brief Show the help menu.
     */
-   void showMenu() const;
+   static void showMenu();
 
    /**
     * @brief Display the game board.
