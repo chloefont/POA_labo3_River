@@ -28,7 +28,7 @@ void Controller::start() {
    if (gameWon)
       cout << "Felicitations, vous avez gagne en " << to_string(turn) << " coups !"
       << endl;
-   //TODO faire en sorte qu'on puisse redémarrer
+
    reset();
 }
 
