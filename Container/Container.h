@@ -19,7 +19,10 @@ class Container
 public:
    friend std::ostream &operator<<(std::ostream &os, const Container &dt);
 
+
    explicit Container(std::string name);
+
+   virtual ~Container() = default;
 
    /**
     * @brief Get the Persons in the Container.
@@ -57,6 +60,9 @@ public:
     * @param person The person to remove.
     */
    void removePerson(Person *person);
+
+   void removeAllPersons();
+
    size_t getNbPeople() const;
 
 private:

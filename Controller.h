@@ -13,41 +13,116 @@
 class Controller : public ErrorManager{
 public:
    /**
-    * Contructor that initializes the River game.
+    * @brief Contructor that initializes the River game.
     */
    Controller();
 
+   ~Controller() override;
+
    /**
-    * Start the game.
+    * @brief Start the game.
     */
    void start();
 
    /**
-    * Show the help menu.
+    * @brief Show the help menu.
     */
    void showMenu() const;
 
    /**
-    * Display the game board.
+    * @brief Display the game board.
     */
    void display() const;
 
+   void manageError(const std::string& message) override;
+
 private:
+   /**
+    * @brief Display the game board and execute new command.
+    */
    void nextTurn();
+
+   /**
+    * @brief Reset game state.
+    */
    void reset();
+
+   /**
+    * @brief Initialize game's persons.
+    */
    void initPersons();
+
+   /**
+    * @brief Initialize game state variables.
+    */
    void initStateVar();
+
+   /**
+    * @brief Print a help menu row with the right format
+    *
+    * @param param command
+    * @param description description of the command
+    */
    static void printMenuRow(const std::string& param, const std::string&
    description);
+
+   /**
+    * @brief Print the boat if it is next to the given bank.
+    *
+    * @param bank bank to check
+    */
    void printBoat(Bank* bank) const;
+
+   /**
+    * @brief Print boundaries of the game board with the given separator.
+    *
+    * @param sep Character to print as a separator.
+    */
    void printBoundary(char sep) const;
+
+   /**
+    * @brief Ask the user for a command and execute it.
+    */
    void executeCommand();
-   void manageError(const std::string& message) ;
+
+   /**
+    * @brief Embark a person on the boat.
+    *
+    * @param person Person to embark.
+    * @return true if the person could be embarked, false otherwise.
+    */
    bool embark(Person* person);
+
+   /**
+    * @brief Disembark a person from the boat in its bank.
+    *
+    * @param person Person to disembark.
+    * @return true if the person could be disembarked, false otherwise.
+    */
    bool land(Person* person);
+
+   /**
+    * @brief Move the boat to the next bank.
+    */
    void moveBoat();
+
+   /**
+    * @brief Get the person with the given name.
+    *
+    * @param name Name of the person.
+    * @return The person with the given name if found, nullptr otherwise.
+    */
    Person* getPerson(const std::string& name) const;
+
+   /**
+    * @brief Check if the game is finished.
+    */
    void checkGameState();
+
+   /**
+    *
+    */
+    void deletePersons();
 
    int turn;
    bool gameFinished;

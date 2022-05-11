@@ -22,5 +22,5 @@ Father *Daughter::getFather() const {
 }
 
 Mother *Daughter::getMother() const {
-   return (Mother*)getPrefferedParent();
+   return (Mother*) getPreferredParent();
 }

@@ -15,8 +15,8 @@ public:
    /**
     * Son constructor
     * @param name Son's name.
-    * @param father Son's parent1.
-    * @param mother Son's parent2.
+    * @param father Son's preferredParent.
+    * @param mother Son's secondParent.
     * @param actualPosition Son's actual position
     * @param errorManager The error manager.
     */

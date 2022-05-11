@@ -63,3 +63,7 @@ std::ostream &operator<<(ostream &os, const Container &container)
    os << endl;
    return os;
 }
+
+void Container::removeAllPersons() {
+   persons.clear();
+}

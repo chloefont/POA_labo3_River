@@ -13,7 +13,7 @@ Son::Son(string name, Father *father, Mother *mother, Container *actualPosition,
            father, mother, actualPosition, errorManager) {}
 
 Father *Son::getFather() const {
-   return (Father *)(getPrefferedParent());
+   return (Father *)(getPreferredParent());
 }
 
 Mother *Son::getMother() const {

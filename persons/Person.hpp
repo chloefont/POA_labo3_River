@@ -12,8 +12,6 @@ class Container;
 
 class Person {
 public:
-   explicit Person(std::string name, Container *actualPosition, ErrorManager *errorManager);
-
    virtual ~Person() = default;
 
 
@@ -59,6 +57,9 @@ public:
     * @return ErrorManager* 
     */
    ErrorManager* getErrorManager() const;
+
+protected:
+   explicit Person(std::string name, Container *actualPosition, ErrorManager *errorManager);
 
 private:
    static const bool CAN_DRIVE = true;

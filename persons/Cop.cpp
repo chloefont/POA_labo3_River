@@ -11,6 +11,4 @@ bool Cop::check() const {
 }
 
 Cop::Cop(std::string name, Container *actualPosition, ErrorManager *errorManager)
-: Person(std::move(name), actualPosition, errorManager) {
-
-}
+: Person(std::move(name), actualPosition, errorManager) {}
