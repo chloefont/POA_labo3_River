@@ -10,7 +10,7 @@ Daughter::Daughter(std::string name, Father *father, Mother *mother,
                          actualPosition, errorManager) {}
 
 Father *Daughter::getFather() const {
-   return (Father *)getSecondParent();
+   return (Father*) getSecondParent();
 }
 
 Mother *Daughter::getMother() const {

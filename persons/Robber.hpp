@@ -12,12 +12,13 @@ class Robber : public Person {
 
 public:
    /**
+    * @brief Constructor of a robber
     *
-    * @param name
-    * @param family
-    * @param cop
-    * @param actualPosition
-    * @param errorManager
+    * @param name Name of the robber
+    * @param family Family with which the robber cannot be
+    * @param cop The cop with which the robber has to be
+    * @param actualPosition Actual position of the robber
+    * @param errorManager The error manager
     */
    explicit Robber(std::string name, FamilyList family, Cop* cop, Container *actualPosition, ErrorManager *errorManager);
    bool canDrive() const override;

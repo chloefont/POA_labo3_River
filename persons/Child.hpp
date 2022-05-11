@@ -6,10 +6,6 @@
 #include "Mother.hpp"
 
 class Child : public Person {
-   static const bool CAN_DRIVE = false;
-   Parent* preferredParent;
-   Parent* secondParent;
-
 public:
    /**
     * Gets the child's preferred parent.
@@ -38,6 +34,11 @@ protected:
     */
    Child(std::string name, Parent *preferredParent, Parent *secondParent,
          Container *actualPosition, ErrorManager *errorManager);
+
+private:
+   static const bool CAN_DRIVE = false;
+   Parent* preferredParent;
+   Parent* secondParent;
 };
 
 

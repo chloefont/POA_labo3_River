@@ -5,6 +5,10 @@ using namespace std;
 
 Person::Person(std::string name, Container *actualPosition, ErrorManager *errorManager) : name(std::move
 (name)) {
+   if (actualPosition == nullptr) {
+      throw invalid_argument("Actual position cannot be nullptr");
+   }
+
    this->actualContainer = actualPosition;
    this->errorManager = errorManager;
    actualContainer->addPerson(this);

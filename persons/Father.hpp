@@ -13,6 +13,7 @@ public:
     * @param errorManager
     */
    explicit Father(std::string name, Container *actualPosition, ErrorManager *errorManager);
+
    bool check() const override;
 };
 

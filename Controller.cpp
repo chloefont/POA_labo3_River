@@ -65,6 +65,9 @@ description) {
 }
 
 void Controller::printBoat(Bank* bank) const {
+   if (boat == nullptr)
+      throw invalid_argument("Boat cannot be nullptr");
+
    if (bank != boat->getBank()) {
       cout << endl;
       return;

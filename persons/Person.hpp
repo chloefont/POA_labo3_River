@@ -10,7 +10,6 @@ class Person {
 public:
    virtual ~Person() = default;
 
-
    /**
     * @brief It moves the person to the given container.
     * 
@@ -55,6 +54,13 @@ public:
    ErrorManager* getErrorManager() const;
 
 protected:
+   /**
+    * @brief Constructor of a person.
+    *
+    * @param name Name of the person.
+    * @param actualPosition Container where the person is.
+    * @param errorManager The error manager.
+    */
    explicit Person(std::string name, Container *actualPosition, ErrorManager *errorManager);
 
 private:

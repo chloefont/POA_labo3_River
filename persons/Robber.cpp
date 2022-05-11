@@ -2,8 +2,11 @@
 #include <stdexcept>
 #include "Robber.hpp"
 using namespace std;
-bool Robber::check() const {
 
+Robber::Robber(std::string name, FamilyList family, Cop* cop, Container *actualPosition,ErrorManager *errorManager)
+: Person(std::move(name),actualPosition, errorManager), family(std::move(family)), cop(cop) {}
+
+bool Robber::check() const {
    if(cop->getActualContainer() != getActualContainer()){
       for(Person* member: family) {
          if (member->getActualContainer() == getActualContainer()) {
@@ -21,13 +24,6 @@ bool Robber::check() const {
 
 bool Robber::canDrive() const {
    return CAN_DRIVE;
-}
-
-Robber::Robber(std::string name, FamilyList family, Cop* cop, Container *actualPosition, ErrorManager *errorManager) : Person
-                                                                   (std::move(name),
-                                                                    actualPosition, errorManager), family
-                                                                    (std::move(family)), cop(cop) {
-
 }
 
 FamilyList Robber::getFamily() const {

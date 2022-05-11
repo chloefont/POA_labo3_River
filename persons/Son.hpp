@@ -4,8 +4,6 @@
 #include "Child.hpp"
 
 class Son : public Child {
-
-
 public:
    /**
     * Son constructor

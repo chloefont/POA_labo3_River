@@ -6,14 +6,14 @@
 /**
  * @brief This is an interface to manage error messages.
  */
-class ErrorManager
-{
+class ErrorManager{
 public:
    /**
      * @brief Manage an error
      * @param name The error message.
      **/
     virtual void manageError(const std::string& message) = 0;
+
     virtual ~ErrorManager() = default;
 };
 
