@@ -6,10 +6,9 @@
 
 /**
  * @brief This class represents a boat.
- *
+ * @authors Luca Coduri & Chloé Fontaine
  */
-class Boat : public Container
-{
+class Boat : public Container {
 public:
    /**
     * @brief Construct a new Boat object

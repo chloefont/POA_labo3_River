@@ -4,7 +4,11 @@
 
 #include "Child.hpp"
 
-class Daughter: public Child {
+/**
+ * @brief This class represents a daughter.
+ * @authors Luca Coduri & Chloé Fontaine
+ */
+class Daughter : public Child {
 public:
    /**
     * Daughter constructor.

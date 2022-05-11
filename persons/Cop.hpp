@@ -4,7 +4,11 @@
 
 #include "Person.hpp"
 
-class Cop: public Person {
+/**
+ * @brief This class represents a cop.
+ * @authors Luca Coduri & Chloé Fontaine
+ */
+class Cop : public Person {
 public:
    /**
     * Cop constructor.
@@ -12,7 +16,8 @@ public:
     * @param actualPosition Cop's position.
     * @param errorManager The error manager.
     */
-   explicit Cop(std::string name, Container *actualPosition, ErrorManager *errorManager);
+   explicit Cop(std::string name, Container *actualPosition,
+                ErrorManager *errorManager);
 };
 
 

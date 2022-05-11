@@ -3,6 +3,10 @@
 
 #include "Child.hpp"
 
+/**
+ * @brief This class represents a son.
+ * @authors Luca Coduri & Chloé Fontaine
+ */
 class Son : public Child {
 public:
    /**

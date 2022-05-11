@@ -5,10 +5,9 @@
 
 /**
  * @brief This class represents a bank.
- *
+ * @authors Luca Coduri & Chloé Fontaine
  */
-class Bank : public Container
-{
+class Bank : public Container {
 public:
    /**
     * @brief Construct a new Bank object

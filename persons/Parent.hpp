@@ -4,9 +4,11 @@
 
 #include "Person.hpp"
 
-class Parent: public Person {
-public:
-
+/**
+ * @brief This class represents a parent
+ * @authors Luca Coduri & Chloé Fontaine
+ */
+class Parent : public Person {
 protected:
    /**
     *
@@ -14,7 +16,8 @@ protected:
     * @param actualPosition Parent's actual position
     * @param errorManager The error manager
     */
-   explicit Parent(std::string name, Container *actualPosition, ErrorManager *errorManager);
+   explicit Parent(std::string name, Container *actualPosition,
+                   ErrorManager *errorManager);
 };
 
 

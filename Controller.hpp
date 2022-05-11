@@ -6,6 +6,10 @@
 #include "Container/Boat.hpp"
 #include "ErrorManager.hpp"
 
+/**
+ * @brief Controller to manage the River game.
+ * @authors Luca Coduri & Chloé Fontaine
+ */
 class Controller : public ErrorManager{
 public:
    /**

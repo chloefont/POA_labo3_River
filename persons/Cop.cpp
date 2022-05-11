@@ -1,5 +1,6 @@
 #include <stdexcept>
 #include "Cop.hpp"
+
 using namespace std;
 
 Cop::Cop(std::string name, Container *actualPosition, ErrorManager *errorManager)

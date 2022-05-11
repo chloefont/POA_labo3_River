@@ -6,6 +6,11 @@
 
 class Container;
 
+/**
+ * @brief This class represents a person. It movements can be restricted
+ *        by the check function.
+ * @authors Luca Coduri & Chloé Fontaine
+ */
 class Person {
 public:
    virtual ~Person() = default;
@@ -44,14 +49,14 @@ public:
     * 
     * @return a container.
     */
-   Container* getActualContainer() const;
+   Container *getActualContainer() const;
 
    /**
     * @brief Get the Error Manager object
     * 
     * @return ErrorManager* 
     */
-   ErrorManager* getErrorManager() const;
+   ErrorManager *getErrorManager() const;
 
 protected:
    /**
@@ -61,12 +66,13 @@ protected:
     * @param actualPosition Container where the person is.
     * @param errorManager The error manager.
     */
-   explicit Person(std::string name, Container *actualPosition, ErrorManager *errorManager);
+   explicit Person(std::string name, Container *actualPosition,
+                   ErrorManager *errorManager);
 
 private:
    static const bool CAN_DRIVE = true;
    Container *actualContainer = nullptr;
-   ErrorManager* errorManager = nullptr;
+   ErrorManager *errorManager = nullptr;
    std::string name;
 };
 

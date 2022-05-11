@@ -9,10 +9,9 @@ class Person;
 
 /**
  * @brief Container class contains persons.
- *
+ * @authors Luca Coduri & Chloé Fontaine
  */
-class Container
-{
+class Container {
 public:
    friend std::ostream &operator<<(std::ostream &os, const Container &dt);
 

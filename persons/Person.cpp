@@ -3,8 +3,9 @@
 
 using namespace std;
 
-Person::Person(std::string name, Container *actualPosition, ErrorManager *errorManager) : name(std::move
-(name)) {
+Person::Person(std::string name, Container *actualPosition,
+               ErrorManager *errorManager) : name(std::move
+                                                     (name)) {
    if (actualPosition == nullptr) {
       throw invalid_argument("Actual position cannot be nullptr");
    }
@@ -37,12 +38,11 @@ bool Person::move(Container &to) {
    }
    old->removePerson(this);
 
-   for (Person* p : old->getPersons())
+   for (Person *p: old->getPersons())
       canMove = canMove && p->check();
 
-   for (Person* p : to.getPersons())
+   for (Person *p: to.getPersons())
       canMove = canMove && p->check();
-
 
 
    if (!canMove) {

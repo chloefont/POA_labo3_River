@@ -4,7 +4,11 @@
 
 #include "Parent.hpp"
 
-class Father: public Parent {
+/**
+ * @brief This class represents a father.
+ * @authors Luca Coduri & Chloé Fontaine
+ */
+class Father : public Parent {
 public:
    /**
     * Father constructor.
@@ -12,7 +16,8 @@ public:
     * @param actualPosition
     * @param errorManager
     */
-   explicit Father(std::string name, Container *actualPosition, ErrorManager *errorManager);
+   explicit Father(std::string name, Container *actualPosition,
+                   ErrorManager *errorManager);
 };
 
 

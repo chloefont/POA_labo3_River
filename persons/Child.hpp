@@ -5,6 +5,10 @@
 #include "Father.hpp"
 #include "Mother.hpp"
 
+/**
+ * @brief This class represents a child.
+ * @authors Luca Coduri & Chloé Fontaine
+ */
 class Child : public Person {
 public:
    /**

@@ -15,7 +15,7 @@ std::string Container::getName() const {
    return name;
 }
 
-bool Container::addPerson(Person *person){
+bool Container::addPerson(Person *person) {
    if (person == nullptr) {
       throw invalid_argument("Person cannot be nullptr");
    }
@@ -50,13 +50,12 @@ bool Container::personInContainer(Person *person) const {
 std::ostream &operator<<(ostream &os, const Container &container) {
    os << container.getName() << " : ";
 
-   if (container.getPersons().empty())
-   {
+   if (container.getPersons().empty()) {
       os << endl;
       return os;
    }
 
-   for (Person *p : container.getPersons())
+   for (Person *p: container.getPersons())
       os << p->getName() << " ";
 
    os << endl;

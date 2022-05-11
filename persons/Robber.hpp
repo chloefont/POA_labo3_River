@@ -5,8 +5,12 @@
 #include "Cop.hpp"
 #include <array>
 
-typedef std::list<Person*> FamilyList;
+typedef std::list<Person *> FamilyList;
 
+/**
+ * @brief This class represents a robber.
+ * @authors Luca Coduri & Chloé Fontaine
+ */
 class Robber : public Person {
    static const bool CAN_DRIVE = false;
 
@@ -20,8 +24,11 @@ public:
     * @param actualPosition Actual position of the robber
     * @param errorManager The error manager
     */
-   explicit Robber(std::string name, FamilyList family, Cop* cop, Container *actualPosition, ErrorManager *errorManager);
+   explicit Robber(std::string name, FamilyList family, Cop *cop,
+                   Container *actualPosition, ErrorManager *errorManager);
+
    bool canDrive() const override;
+
    bool check() const override;
 
    /**
@@ -34,11 +41,11 @@ public:
     * Get the cop that watch at the robber.
     * @return a cop.
     */
-   Cop* getCop() const;
+   Cop *getCop() const;
 
 private:
    const FamilyList family;
-   Cop* cop;
+   Cop *cop;
 };
 
 
