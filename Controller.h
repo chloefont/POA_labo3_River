@@ -12,13 +12,28 @@
 
 class Controller : public ErrorManager{
 public:
+   /**
+    * Contructor that initializes the River game.
+    */
    Controller();
+
+   /**
+    * Start the game.
+    */
    void start();
+
+   /**
+    * Show the help menu.
+    */
    void showMenu() const;
+
+   /**
+    * Display the game board.
+    */
    void display() const;
-   void nextTurn();
 
 private:
+   void nextTurn();
    void reset();
    void initPersons();
    void initStateVar();

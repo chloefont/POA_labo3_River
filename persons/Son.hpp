@@ -22,9 +22,9 @@ public:
     */
    Son(std::string name, Father *father, Mother *mother, Container *actualPosition, ErrorManager *errorManager);
 
-   Father *getFather();
+   Father *getFather() const;
 
-   Mother *getMother();
+   Mother *getMother() const;
 };
 
 

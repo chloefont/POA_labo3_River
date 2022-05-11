@@ -53,7 +53,6 @@ public:
     */
    Container* getActualContainer() const;
 
-protected:
    /**
     * @brief Get the Error Manager object
     * 

@@ -16,8 +16,16 @@ Bank* Boat::getBank() const {
 }
 
 bool Boat::addPerson(Person *person) {
-   if (getNbPeople() >= capacity)
+   if (getNbPeople() >= capacity) {
+      if (person->getErrorManager())
+         person->getErrorManager()->manageError("Le bateau est plein");
       return false;
+   } else if (!getBank()->personInContainer(person)) {
+      if (person->getErrorManager())
+         person->getErrorManager()->manageError("la personne n'est pas sur la bonne "
+                                             "rive");
+      return false;
+   }
 
    Container::addPerson(person);
    return true;

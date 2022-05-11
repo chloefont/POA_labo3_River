@@ -197,14 +197,8 @@ Person *Controller::getPerson(const string &name) const {
 }
 
 bool Controller::embark(Person *person) {
-   // TODO test embarquer qqu sur rive opposée
-   if (boat->getBank()->personInContainer(person)) {
-      if (person->move(*boat)) {
-         return true;
-      }
-
-   } else {
-      manageError("la personne selectionnee n'est pas sur la bonne rive");
+   if (person->move(*boat)) {
+      return true;
    }
 
    return false;

@@ -28,14 +28,38 @@ TEST_CASE( "Boat" ) {
       SECTION("Left bank") {
          REQUIRE(boat.getBank() == &leftBank);
       }
+
+      SECTION("Right bank") {
+         Boat boat2("Bateau", &rightBank, MAX_CAPACITY);
+         REQUIRE(boat2.getBank() == &rightBank);
+      }
    }
 
    SECTION("MoveTo()") {
-      SECTION("Left bank") {}//TODO
+      SECTION("Move to with no one") {
+         REQUIRE(boat.moveTo(&rightBank) == false);
+         REQUIRE(boat.getBank() == &leftBank);
+      }
+
+      SECTION("Move to with one driver") {
+         Father father2("Father2", &leftBank, nullptr);
+         REQUIRE(father2.move(boat) == true);
+         REQUIRE(boat.moveTo(&rightBank) == true);
+      }
    }
 
-   SECTION("addPerson()") {
-      //TODO
+   SECTION("move person on boat") {
+      SECTION("add person from bank next to boat") {
+         REQUIRE(robber.move(boat));
+         REQUIRE(boat.getNbPeople() == 1);
+      }
+
+      SECTION("add person from bank far from boat") {
+         Robber robber2("Robber2", family, &cop, &rightBank, nullptr);
+         CHECK(boat.getBank() == &leftBank);
+         REQUIRE(robber2.move(boat) == false);
+         REQUIRE(boat.getNbPeople() == 0);
+      }
    }
 
    SECTION("2 persons max on boat") {

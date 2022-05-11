@@ -17,10 +17,10 @@ Daughter::Daughter(std::string name, Father *father, Mother *mother,
 
 }
 
-Father *Daughter::getFather() {
+Father *Daughter::getFather() const {
    return (Father *)getSecondParent();
 }
 
-Mother *Daughter::getMother() {
+Mother *Daughter::getMother() const {
    return (Mother*)getPrefferedParent();
 }

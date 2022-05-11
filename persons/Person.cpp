@@ -30,10 +30,9 @@ bool Person::move(Container &to) {
    auto old = actualContainer;
    actualContainer = &to;
    bool canMove = true;
+
    if (!to.addPerson(this)) {
       actualContainer = old;
-      if (errorManager != nullptr)
-         errorManager->manageError("Le bateau est plein");
       return false;
    }
    old->removePerson(this);

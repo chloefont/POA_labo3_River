@@ -38,7 +38,9 @@ TEST_CASE( "Father" ) {
          REQUIRE(father.move(boat));
       }
 
-      SECTION("Move to right bank should be ok"){
+      SECTION("Move to right bank should be ok by driving boat"){
+         REQUIRE(father.move(boat));
+         REQUIRE(boat.moveTo(&bankRight));
          REQUIRE(father.move(bankRight));
       }
 

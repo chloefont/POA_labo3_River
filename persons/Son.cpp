@@ -12,10 +12,10 @@ Son::Son(string name, Father *father, Mother *mother, Container *actualPosition,
    : Child(std::move(name),
            father, mother, actualPosition, errorManager) {}
 
-Father *Son::getFather() {
+Father *Son::getFather() const {
    return (Father *)(getPrefferedParent());
 }
 
-Mother *Son::getMother() {
+Mother *Son::getMother() const {
    return (Mother *)getSecondParent();
 }

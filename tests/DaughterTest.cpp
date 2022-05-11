@@ -20,25 +20,25 @@ TEST_CASE( "Daughter" ) {
          REQUIRE_NOTHROW(daughter.check());
       }
 
-      SECTION("Should return false"){
+      SECTION("Should return false if alone with father"){
          Father father2("Father", &bankRight, nullptr);
          Daughter daughter2("Daughter", &father2, &mother, &bankRight, nullptr);
 
          CHECK(false == daughter2.check());
       }
 
-      SECTION("Should return true"){
+      SECTION("Should return true if not alone with father"){
          CHECK(true == daughter.check());
       }
    }
-   SECTION( "getFather()" ) {
-      SECTION("Should return parent1"){
+   SECTION("getFather()") {
+      SECTION("Should return father"){
          CHECK(&father == daughter.getFather());
       }
    }
 
    SECTION( "getMother()" ) {
-      SECTION("Should return parent1"){
+      SECTION("Should return mother"){
          CHECK(&mother == daughter.getMother());
       }
    }
@@ -70,12 +70,12 @@ TEST_CASE( "Daughter" ) {
       }
    }
 
-   SECTION("Cannot stay with parent1 if parent2 is not there"){
-      SECTION("Mother cannot leave her daughter with parent1") {
+   SECTION("Cannot stay with father if mother is not there"){
+      SECTION("Mother cannot leave her daughter with father") {
          REQUIRE(mother.move(boat) == false);
       }
 
-      SECTION("Father can leave her daughter with parent2"){
+      SECTION("Father can leave her daughter with mother"){
          REQUIRE(father.move(boat) == true);
       }
    }
