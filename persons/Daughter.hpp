@@ -10,6 +10,14 @@
 
 class Daughter: public Child {
 public:
+   /**
+    * Daughter construcotr.
+    * @param name Daughter's name.
+    * @param father Daughter's father.
+    * @param mother Daughter's mother.
+    * @param actualPosition Daughter's position.
+    * @param errorManager The errorManager.
+    */
    Daughter(std::string name, Father *father, Mother *mother,
             Container *actualPosition, ErrorManager *errorManager);
    bool check() const override;

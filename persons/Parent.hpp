@@ -10,6 +10,12 @@
 
 class Parent: public Person {
 public:
+   /**
+    *
+    * @param name Parent's name
+    * @param actualPosition Parent's actual position
+    * @param errorManager The error manager
+    */
    explicit Parent(std::string name, Container *actualPosition, ErrorManager *errorManager);
    bool check() const override;
 };

@@ -10,6 +10,12 @@
 
 class Father: public Parent {
 public:
+   /**
+    * Father constructor.
+    * @param name
+    * @param actualPosition
+    * @param errorManager
+    */
    explicit Father(std::string name, Container *actualPosition, ErrorManager *errorManager);
    bool check() const override;
 };
