@@ -1,9 +1,5 @@
-//
-// Created by cfont on 05.05.2022.
-//
-
 #include <stdexcept>
-#include "Boat.h"
+#include "Boat.hpp"
 
 using namespace std;
 

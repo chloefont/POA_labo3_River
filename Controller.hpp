@@ -1,14 +1,10 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
-#ifndef LABO4_RIVER_CONTROLLER_H
-#define LABO4_RIVER_CONTROLLER_H
+#ifndef LABO4_RIVER_CONTROLLER_HPP
+#define LABO4_RIVER_CONTROLLER_HPP
 
 #include <string>
-#include "Container/Bank.h"
-#include "Container/Boat.h"
-#include "ErrorManager.h"
+#include "Container/Bank.hpp"
+#include "Container/Boat.hpp"
+#include "ErrorManager.hpp"
 
 class Controller : public ErrorManager{
 public:
@@ -120,7 +116,7 @@ private:
    void checkGameState();
 
    /**
-    *
+    * @brief Delete all persons.
     */
     void deletePersons();
 
@@ -140,4 +136,4 @@ private:
 };
 
 
-#endif //LABO4_RIVER_CONTROLLER_H
+#endif //LABO4_RIVER_CONTROLLER_HPP

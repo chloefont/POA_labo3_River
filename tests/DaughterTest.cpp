@@ -1,9 +1,8 @@
-
 #include "catch.hpp"
 #include "../persons/Son.hpp"
 #include "../persons/Daughter.hpp"
-#include "../Container/Bank.h"
-#include "../Container/Boat.h"
+#include "../Container/Bank.hpp"
+#include "../Container/Boat.hpp"
 
 TEST_CASE( "Daughter" ) {
    Bank bankLeft("Left");

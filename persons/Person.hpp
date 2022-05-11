@@ -1,14 +1,10 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
 #ifndef LABO4_RIVER_PERSON_HPP
 #define LABO4_RIVER_PERSON_HPP
 
-class Container;
+#include "../Container/Container.hpp"
+#include "../ErrorManager.hpp"
 
-#include "../Container/Container.h"
-#include "../ErrorManager.h"
+class Container;
 
 class Person {
 public:

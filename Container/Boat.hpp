@@ -1,12 +1,8 @@
-//
-// Created by cfont on 05.05.2022.
-//
+#ifndef LABO4_RIVER_BOAT_HPP
+#define LABO4_RIVER_BOAT_HPP
 
-#ifndef LABO4_RIVER_BOAT_H
-#define LABO4_RIVER_BOAT_H
-
-#include "Container.h"
-#include "Bank.h"
+#include "Container.hpp"
+#include "Bank.hpp"
 
 /**
  * @brief This class represents a boat.
@@ -46,4 +42,4 @@ private:
    size_t capacity;
 };
 
-#endif // LABO4_RIVER_BOAT_H
+#endif // LABO4_RIVER_BOAT_HPP

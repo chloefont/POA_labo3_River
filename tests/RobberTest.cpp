@@ -1,10 +1,9 @@
-
 #include "catch.hpp"
 #include "../persons/Son.hpp"
 #include "../persons/Robber.hpp"
 #include "../persons/Daughter.hpp"
-#include "../Container/Bank.h"
-#include "../Container/Boat.h"
+#include "../Container/Bank.hpp"
+#include "../Container/Boat.hpp"
 
 TEST_CASE( "Robber" ) {
    Bank bankLeft("Left");

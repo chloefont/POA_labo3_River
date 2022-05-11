@@ -1,9 +1,5 @@
-//
-// Created by cfont on 05.05.2022.
-//
-
-#ifndef LABO4_RIVER_CONTAINER_H
-#define LABO4_RIVER_CONTAINER_H
+#ifndef LABO4_RIVER_CONTAINER_HPP
+#define LABO4_RIVER_CONTAINER_HPP
 
 #include <string>
 #include <list>
@@ -61,8 +57,16 @@ public:
     */
    void removePerson(Person *person);
 
+   /**
+    * @brief Removes all persons from the container.
+    */
    void removeAllPersons();
 
+   /**
+    * @brief Get the number of persons in the container.
+    *
+    * @return The number of persons in the container.
+    */
    size_t getNbPeople() const;
 
 private:
@@ -70,4 +74,4 @@ private:
    std::list<Person *> persons;
 };
 
-#endif // LABO4_RIVER_CONTAINER_H
+#endif // LABO4_RIVER_CONTAINER_HPP

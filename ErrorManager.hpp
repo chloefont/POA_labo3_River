@@ -1,9 +1,5 @@
-//
-// Created by cfont on 10.05.2022.
-//
-
-#ifndef LABO4_RIVER_ERRORMANAGER_H
-#define LABO4_RIVER_ERRORMANAGER_H
+#ifndef LABO4_RIVER_ERRORMANAGER_HPP
+#define LABO4_RIVER_ERRORMANAGER_HPP
 
 #include <string>
 
@@ -21,4 +17,4 @@ public:
     virtual ~ErrorManager() = default;
 };
 
-#endif //LABO4_RIVER_ERRORMANAGER_H
+#endif //LABO4_RIVER_ERRORMANAGER_HPP

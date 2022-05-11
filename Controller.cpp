@@ -1,8 +1,4 @@
-//
-// Created by cfont on 14.04.2022.
-//
-
-#include "Controller.h"
+#include "Controller.hpp"
 #include "persons/Father.hpp"
 #include "persons/Mother.hpp"
 #include "persons/Daughter.hpp"

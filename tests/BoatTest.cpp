@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include "catch.hpp"
-#include "../Controller.h"
+#include "../Controller.hpp"
 #include "../persons/Father.hpp"
 #include "../persons/Mother.hpp"
 #include "../persons/Son.hpp"
