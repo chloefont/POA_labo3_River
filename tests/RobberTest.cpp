@@ -12,7 +12,7 @@ TEST_CASE( "Robber" ) {
    Boat boat("Boat", &bankLeft, 2);
 
    Father father("Father", &bankLeft, nullptr);
-   Mother mother("mother", &bankLeft, nullptr);
+   Mother mother("parent2", &bankLeft, nullptr);
    Son son1("Son1", &father, &mother, &bankLeft, nullptr);
    Son son2("Son2", &father, &mother, &bankLeft, nullptr);
    Daughter daughter1("Daughter1", &father, &mother, &bankRight, nullptr);
@@ -51,7 +51,7 @@ TEST_CASE( "Robber" ) {
    }
 
    SECTION( "getName()" ) {
-      SECTION("Should return father"){
+      SECTION("Should return parent1"){
          CHECK("Robber" == robber.getName());
       }
    }

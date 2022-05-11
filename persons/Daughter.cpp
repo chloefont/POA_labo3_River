@@ -8,23 +8,19 @@
 
 using namespace std;
 
-bool Daughter::check() const {
-   if(getMother()->getActualContainer() != getActualContainer() &&
-      getFather()->getActualContainer() == getActualContainer()){
-      if (getErrorManager() != nullptr)
-         getErrorManager()->manageError("la fille ne peut pas rester sans sa mere "
-                                     "avec son pere");
-      return false;
-   }
-
-   return true;
-}
-
 Daughter::Daughter(std::string name, Father *father, Mother *mother,
                    Container *actualPosition, ErrorManager *errorManager) : Child(std::move(
                                                                               name),
-                                                                           father,
-                                                                           mother,
+                                                                                  mother,
+                                                                                  father,
                                                                            actualPosition, errorManager) {
 
+}
+
+Father *Daughter::getFather() {
+   return (Father *)getSecondParent();
+}
+
+Mother *Daughter::getMother() {
+   return (Mother*)getPrefferedParent();
 }

@@ -15,13 +15,16 @@ public:
    /**
     * Son constructor
     * @param name Son's name.
-    * @param father Son's father.
-    * @param mother Son's mother.
+    * @param father Son's parent1.
+    * @param mother Son's parent2.
     * @param actualPosition Son's actual position
     * @param errorManager The error manager.
     */
    Son(std::string name, Father *father, Mother *mother, Container *actualPosition, ErrorManager *errorManager);
-   bool check() const override;
+
+   Father *getFather();
+
+   Mother *getMother();
 };
 
 

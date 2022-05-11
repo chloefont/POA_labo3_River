@@ -30,13 +30,13 @@ TEST_CASE( "Son" ) {
    }
 
    SECTION( "getFather()" ) {
-      SECTION("Should return father"){
+      SECTION("Should return parent1"){
          CHECK(&father == son.getFather());
       }
    }
 
    SECTION( "getMother()" ) {
-      SECTION("Should return father"){
+      SECTION("Should return parent1"){
          CHECK(&mother == son.getMother());
       }
    }
@@ -68,12 +68,12 @@ TEST_CASE( "Son" ) {
       }
    }
 
-   SECTION("Cannot stay with mother if father is not there"){
-      SECTION("Father cannot leave his son with mother"){
+   SECTION("Cannot stay with parent2 if parent1 is not there"){
+      SECTION("Father cannot leave his son with parent2"){
          REQUIRE(father.move(boat) == false);
       }
 
-      SECTION("Mother can leave her son with father") {
+      SECTION("Mother can leave her son with parent1") {
          REQUIRE(mother.move(boat) == true);
       }
    }
