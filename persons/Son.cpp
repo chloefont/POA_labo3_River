@@ -10,6 +10,7 @@ using namespace std;
 bool Son::check() const {
    if(getMother()->getActualContainer() == getActualContainer() &&
    getFather()->getActualContainer() != getActualContainer()){
+      if (getErrorManager() != nullptr)
       getErrorManager()->manageError("le fils ne peut pas rester sans son pere "
                                      "avec sa mere");
       return false;

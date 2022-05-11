@@ -11,7 +11,8 @@ using namespace std;
 bool Daughter::check() const {
    if(getMother()->getActualContainer() != getActualContainer() &&
       getFather()->getActualContainer() == getActualContainer()){
-      getErrorManager()->manageError("la fille ne peut pas rester sans sa mere "
+      if (getErrorManager() != nullptr)
+         getErrorManager()->manageError("la fille ne peut pas rester sans sa mere "
                                      "avec son pere");
       return false;
    }

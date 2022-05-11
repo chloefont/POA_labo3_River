@@ -10,7 +10,8 @@ bool Robber::check() const {
    if(cop->getActualContainer() != getActualContainer()){
       for(Person* member: family) {
          if (member->getActualContainer() == getActualContainer()) {
-            getErrorManager()->manageError("le voleur ne peut pas etre en contact "
+            if (getErrorManager() != nullptr)
+               getErrorManager()->manageError("le voleur ne peut pas etre en contact "
                                            "avec un membre de la famille sans le policier");
             return false;
          }
