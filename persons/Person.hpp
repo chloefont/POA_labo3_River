@@ -19,7 +19,7 @@ public:
    bool move(Container &to);
 
    /**
-    * @brief It tells id the person can drive the boat.
+    * @brief It tells if the person can drive the boat.
     * 
     * @return true if the person can drive.
     */

@@ -35,6 +35,11 @@ public:
     */
    bool moveTo(Bank *bank);
 
+   /**
+    * @brief Adds a person to the boat.
+    * @param person The person to add.
+    * @return True if the person was successfully added
+    */
    bool addPerson(Person *person) override;
 
 private:
