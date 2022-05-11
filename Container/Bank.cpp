@@ -7,6 +7,6 @@
 
 using namespace std;
 
-Bank::Bank(const std::string &name) : Container(name) {
+Bank::Bank(string name) : Container(move(name)) {
 
 }

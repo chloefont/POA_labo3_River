@@ -19,7 +19,7 @@ public:
     *
     * @param name The name of the bank.
     **/
-   explicit Bank(const std::string &name);
+   explicit Bank(std::string name);
 
 private:
 };

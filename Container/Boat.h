@@ -22,7 +22,7 @@ public:
     * @param bank The actual bank where the boat is.
     * @param capacity The capacity of the boat.
     */
-   Boat(const std::string &name, Bank *bank, size_t capacity);
+   Boat(std::string name, Bank *bank, size_t capacity);
 
    /**
     * @brief Get the Bank where the boat is.

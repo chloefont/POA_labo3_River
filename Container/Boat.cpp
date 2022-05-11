@@ -7,7 +7,7 @@
 
 using namespace std;
 
-Boat::Boat(const std::string& name, Bank* bank, size_t capacity) : Container(name),
+Boat::Boat(string name, Bank* bank, size_t capacity) : Container(move(name)),
 bank(bank), capacity(capacity) {
 }
 
