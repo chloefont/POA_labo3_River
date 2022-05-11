@@ -45,7 +45,7 @@
       <child>96161</child>
       <parent>96795</parent>
     </inheritance>
-    <association aggregation="NONE" direction="SECOND_TO_FIRST" id="99592" name="alert">
+    <association aggregation="NONE" direction="SECOND_TO_FIRST" id="99592" name="alerte">
       <role componentId="96795" name="errorManager" visibility="PRIVATE">
         <multiplicity>
           <min>1</min>
@@ -849,7 +849,7 @@
       <labelAssociation>
         <x>706</x>
         <y>63</y>
-        <w>30</w>
+        <w>38</w>
         <h>17</h>
       </labelAssociation>
       <roleAssociation>
@@ -861,7 +861,7 @@
       <roleAssociation>
         <x>995</x>
         <y>95</y>
-        <w>0</w>
+        <w>30</w>
         <h>17</h>
       </roleAssociation>
       <multipliciteAssociation>
