@@ -18,6 +18,11 @@ public:
     */
    explicit Father(std::string name, Container *actualPosition,
                    ErrorManager *errorManager);
+
+   Father(const Father &father) = delete;
+
+   Father &operator=(const Father &father) = delete;
+
 };
 
 

@@ -18,6 +18,10 @@ protected:
     */
    explicit Parent(std::string name, Container *actualPosition,
                    ErrorManager *errorManager);
+
+   Parent(const Parent &) = delete;
+
+   Parent &operator=(const Parent &) = delete;
 };
 
 

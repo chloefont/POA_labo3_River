@@ -21,6 +21,11 @@ public:
    Daughter(std::string name, Father *father, Mother *mother,
             Container *actualPosition, ErrorManager *errorManager);
 
+   Daughter(const Daughter &daughter) = delete;
+
+   Daughter &operator=(const Daughter &daughter) = delete;
+
+
    Father *getFather() const;
 
    Mother *getMother() const;

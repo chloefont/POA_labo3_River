@@ -18,6 +18,11 @@ public:
     */
    explicit Cop(std::string name, Container *actualPosition,
                 ErrorManager *errorManager);
+
+   Cop(const Cop &cop) = delete;
+
+   Cop &operator=(const Cop &cop) = delete;
+
 };
 
 

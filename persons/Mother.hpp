@@ -18,6 +18,11 @@ public:
     */
    explicit Mother(std::string name, Container *actualPosition,
                    ErrorManager *errorManager);
+
+   Mother(const Mother &mother) = delete;
+
+   Mother &operator=(const Mother &mother) = delete;
+
 };
 
 

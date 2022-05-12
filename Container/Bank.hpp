@@ -16,6 +16,10 @@ public:
     **/
    explicit Bank(std::string name);
 
+   Bank(const Bank&) = delete;
+
+   Bank& operator=(const Bank&) = delete;
+
 private:
 };
 

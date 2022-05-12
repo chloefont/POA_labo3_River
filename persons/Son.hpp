@@ -19,6 +19,10 @@ public:
     */
    Son(std::string name, Father *father, Mother *mother, Container *actualPosition, ErrorManager *errorManager);
 
+   Son(const Son &son) = delete;
+
+   Son &operator=(const Son &son) = delete;
+
    Father *getFather() const;
 
    Mother *getMother() const;

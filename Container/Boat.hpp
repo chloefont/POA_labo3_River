@@ -19,6 +19,11 @@ public:
     */
    Boat(std::string name, Bank *bank, size_t capacity);
 
+   Boat(const Boat &boat) = delete;
+
+   Boat &operator=(const Boat &boat) = delete;
+
+
    /**
     * @brief Get the Bank where the boat is.
     *

@@ -69,6 +69,10 @@ protected:
    explicit Person(std::string name, Container *actualPosition,
                    ErrorManager *errorManager);
 
+   Person(const Person &) = delete;
+
+   Person &operator=(const Person &) = delete;
+
 private:
    static const bool CAN_DRIVE = true;
    Container *actualContainer = nullptr;

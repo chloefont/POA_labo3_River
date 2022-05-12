@@ -39,6 +39,10 @@ protected:
    Child(std::string name, Parent *preferredParent, Parent *secondParent,
          Container *actualPosition, ErrorManager *errorManager);
 
+   Child(const Child &child) = delete;
+
+   Child& operator=(const Child &child) = delete;
+
 private:
    static const bool CAN_DRIVE = false;
    Parent* preferredParent;

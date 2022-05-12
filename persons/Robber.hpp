@@ -12,8 +12,6 @@ typedef std::list<Person *> FamilyList;
  * @authors Luca Coduri & Chloé Fontaine
  */
 class Robber : public Person {
-   static const bool CAN_DRIVE = false;
-
 public:
    /**
     * @brief Constructor of a robber
@@ -26,6 +24,10 @@ public:
     */
    explicit Robber(std::string name, FamilyList family, Cop *cop,
                    Container *actualPosition, ErrorManager *errorManager);
+
+   Robber(const Robber &) = delete;
+
+   Robber &operator=(const Robber &) = delete;
 
    bool canDrive() const override;
 
@@ -44,6 +46,7 @@ public:
    Cop *getCop() const;
 
 private:
+   static const bool CAN_DRIVE = false;
    const FamilyList family;
    Cop *cop;
 };
