@@ -19,6 +19,10 @@ public:
 
    ~Controller() override;
 
+   Controller(const Controller&) = delete;
+
+   Controller& operator=(const Controller&) = delete;
+
    /**
     * @brief Start the game.
     */
